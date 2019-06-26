@@ -10,12 +10,12 @@ class HomeContainer extends React.Component{
       // if the user does not have a token, redirect to Log In
       window.location.replace(`http://localhost:3001/login`)
     }
-    // fetch('http://localhost:3000/contacts', {
-    //   headers: {
-    //     "Authorization": localStorage.getItem("token")
-    //   }
-    // }).then(res => res.json())
-    //   .then(console.log)
+    fetch('http://localhost:3000/api/v1/contacts', {
+      headers: {
+        "Authorization": localStorage.getItem("token")
+      }
+    }).then(res => res.json())
+      .then(console.log)
   }
 
   render(){
