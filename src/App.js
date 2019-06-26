@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
+import LogInPage from './Pages/LogInPage.js';
+import SignUpPage from './Pages/SignUpPage.js';
+import HomePage from './Pages/HomePage';
+import EventsPage from './Pages/EventsPage';
+import ContactsPage from './Pages/ContactsPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route path='/login' component={LogInPage}/>
+        <Route path='/signup' component={SignUpPage}/>
+        <Route path='/main' component={HomePage}/>
+        <Route path='/events' component={EventsPage}/>
+        <Route path='/contacts' component={ContactsPage}/>
+      </Switch>
     </div>
   );
 }
