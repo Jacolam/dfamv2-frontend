@@ -14,10 +14,11 @@ class ContactPage extends React.Component{
   render(){
     return(
       <div>
-      <NavBar/>
+        <NavBar/>
+         {this.renderContacts()}
       </div>
     )
   }
 }
 
-export default connect()(ContactPage)
+export default connect(mapStateToProps)(ContactPage)
