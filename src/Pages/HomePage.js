@@ -18,7 +18,6 @@ class HomeContainer extends React.Component{
       }
     }).then(res => res.json())
       .then(contacts => {
-    // console.log('after fetch',contacts)
     console.log(contacts)
     this.props.getContacts(contacts)
     })
