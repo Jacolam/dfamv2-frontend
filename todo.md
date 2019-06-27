@@ -8,3 +8,5 @@ Login page
 
 Create a function that checks for token
   -Extract out and call function in each location ( repeated 6 times so far )
+
+needs to send fetch request from every page if token is present
