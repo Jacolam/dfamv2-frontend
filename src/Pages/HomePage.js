@@ -19,7 +19,7 @@ class HomeContainer extends React.Component{
     }).then(res => res.json())
       .then(contacts => {
     console.log(contacts)
-    this.props.getContacts(contacts)
+    this.props.setContacts(contacts)
     })
   }
 
@@ -36,7 +36,7 @@ class HomeContainer extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getContacts: (contacts) => dispatch({type:'GET_CONTACTS',contacts})
+    setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts})
   }
 }
 const mapStateToProps = (state) => {

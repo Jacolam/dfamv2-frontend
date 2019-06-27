@@ -23,7 +23,7 @@ class MainDisplay extends React.Component{
           <ul>
             <li>
               Meet up with Jane Doe @ 6PM for dinner @
-              /*needs date, time , where ,contact id, complete:boolean*/
+              {/*needs date, time , where ,contact id, complete:boolean*/}
               <button>Complete Event</button>
             </li>
           </ul>
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default MainDisplay
+export default connect(mapStateToProps)(MainDisplay)

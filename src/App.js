@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import LogInPage from './Pages/LogInPage.js';
 import SignUpPage from './Pages/SignUpPage.js';

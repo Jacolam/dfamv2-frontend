@@ -17,6 +17,7 @@ class ContactsPage extends React.Component{
       const { username } = contact
       // console.log(phone)
       return <ul><ContactCard
+        key={username}
         username={username}
         /></ul>
     })
