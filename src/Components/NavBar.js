@@ -12,7 +12,7 @@ class NavBar extends React.Component{
 
   render(){
     return(
-      <div>
+      <div style={{border: "solid"}}>
         NavBar Container
         <ul>
           <Link to="/main">Home</Link><br/>

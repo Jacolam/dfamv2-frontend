@@ -13,7 +13,7 @@ class ContactsPage extends React.Component{
 
   renderContacts = () => {
     return this.props.state.contacts.map((contact)=>{
-      console.log(contact)
+      // console.log(contact)
       return <ul><ContactCard
         key={contact.contactee.username}
         username={contact.contactee.username}
