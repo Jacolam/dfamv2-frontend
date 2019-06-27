@@ -1,23 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
+import hasToken from '../hasToken.js'
+
 
 class ContactPage extends React.Component{
 
   componentDidMount(){
-    if (!localStorage.token){
-      // if the user already has a token, redirect to homepage
-      window.location.replace(`http://localhost:3001/login`)
-    }
+    hasToken()
   }
 
   render(){
     return(
       <div>
-      <NavBar/>
+        <NavBar/>
+         {this.renderContacts()}
       </div>
     )
   }
 }
 
-export default connect()(ContactPage)
+export default connect(mapStateToProps)(ContactPage)
