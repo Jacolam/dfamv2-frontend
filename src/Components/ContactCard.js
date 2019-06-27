@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 
 class ContactCard extends React.Component{
@@ -18,4 +18,4 @@ class ContactCard extends React.Component{
   }
 }
 
-export default ContactCard
+export default connect()(ContactCard)

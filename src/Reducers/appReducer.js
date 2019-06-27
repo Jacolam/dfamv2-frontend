@@ -2,7 +2,8 @@ const initialState = {
   loggedIn: false,
   contacts: [],
   upComingCalls: [],
-  upComingEvents: []
+  upComingEvents: [],
+  events:[]
 }
 
 function appReducer( state = initialState , action){
@@ -12,12 +13,17 @@ function appReducer( state = initialState , action){
         ...state,
         loggedIn: true
       }
-    case 'GET_CONTACTS':
+    case 'SET_CONTACTS':
     const contactsCopy = action.contacts
-    // using concat, was returning arr in arr
       return {
         ...state,
         contacts: contactsCopy
+      }
+    case 'SET_EVENTS':
+    const eventsCopy = action.events
+      return {
+        ...state,
+        events: eventsCopy
       }
     default:
       return state
