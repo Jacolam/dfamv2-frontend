@@ -14,11 +14,14 @@ class ContactsPage extends React.Component{
   renderContacts = () => {
     return this.props.state.contacts.map((contact)=>{
       console.log(contact)
-      const { username } = contact
-      // console.log(phone)
       return <ul><ContactCard
-        key={username}
-        username={username}
+        key={contact.contactee.username}
+        username={contact.contactee.username}
+        meetCycle={contact.meet_cycle}
+        callCycle={contact.call_cycle}
+        avatar={contact.contactee.avatar}
+        twitter={contact.contactee.twitter}
+        facebook={contact.contactee.facebook}
         /></ul>
     })
   }

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 class ContactCard extends React.Component{
 
   render(){
+    console.log(this.props)
     return(
       <div>
         {this.props.username}

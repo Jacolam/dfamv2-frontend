@@ -17,9 +17,9 @@ class HomeContainer extends React.Component{
         "Authorization": localStorage.getItem("token")
       }
     }).then(res => res.json())
-      .then(contacts => {
-    console.log(contacts)
-    this.props.setContacts(contacts)
+      .then(data => {
+    console.log(data)
+    this.props.setContacts(data.contacts)
     })
   }
 
