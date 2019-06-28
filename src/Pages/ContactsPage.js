@@ -27,11 +27,13 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-    console.log(this.props.state)
+    console.log(this.props.state.allContacts)
     return(
       <div>
       Contacts Page
       <NavBar/>
+      Looking for someone?
+
       {this.renderContacts()}
       </div>
     )

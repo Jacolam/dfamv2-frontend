@@ -6,7 +6,7 @@ import { Card, Image , Icon } from 'semantic-ui-react'
 
 class ContactCard extends React.Component{
 
-  handleClick = (e) =>{
+  handleClick = (e,props) =>{
     // console.log(e.target.innerHTML)
     const target = e.target.innerHTML
     switch(target){
@@ -17,8 +17,13 @@ class ContactCard extends React.Component{
         window.open(this.props.facebook)
       break;
       default:
-      console.log('default', e.target.id)
-      console.log(this.props)
+      // need a state for allcontacts: true
+      //defaults needs to set state for contact to this props
+      //render the contact componet with this information
+      // hiding the render contacts
+      // console.log('before envoked',this.props)
+      this.props.showContact()
+      // console.log(this.props)
 
     }
   }
@@ -30,8 +35,8 @@ class ContactCard extends React.Component{
   render(){
     console.log(this.props)
     return(
-      <Card onClick={this.handleClick} id={this.props.username}>
-        <Image src={this.props.avatar} id={this.props.username}/>
+      <Card onClick={ (e) => this.handleClick(e,this.props)} >
+        <Image src={this.props.avatar} />
         <Card.Header id={this.props.username}>
           {this.capitalize(this.props.username)}
         </Card.Header>
@@ -53,4 +58,9 @@ class ContactCard extends React.Component{
   }
 }
 
-export default connect()(ContactCard)
+const mapDispatchToProps = dispatch =>{
+  return{
+    showContact: () => dispatch({ type: 'SHOW_CONTACT'})
+  }
+}
+export default connect(null,mapDispatchToProps)(ContactCard)

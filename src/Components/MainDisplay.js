@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Segment } from 'semantic-ui-react'
 
 
 class MainDisplay extends React.Component{
@@ -22,10 +23,10 @@ class MainDisplay extends React.Component{
   render(){
 
     return(
-      <div style={{border: "solid"}}>
-      MainDisplay Container
-        <div style={{border: "solid"}}>
-          upcoming calls
+      <Segment>
+      Dashboard
+        <Segment>
+          <h4>Upcoming Calls</h4>
           <ul>
             <li>
               call 1
@@ -34,9 +35,9 @@ class MainDisplay extends React.Component{
               <button>Complete Call</button>
             </li>
           </ul>
-        </div>
-        <div style={{border: "solid"}}>
-          up coming events
+        </Segment>
+        <Segment>
+          <h4>Upcoming Events</h4>
           <ul>
             <li>
               Meet up with Jane Doe @ 6PM for dinner @
@@ -44,8 +45,8 @@ class MainDisplay extends React.Component{
               <button>Complete Event</button>
             </li>
           </ul>
-        </div>
-      </div>
+        </Segment>
+      </Segment>
     )
   }
 }

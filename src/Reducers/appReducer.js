@@ -3,7 +3,8 @@ const initialState = {
   contacts: [],
   upComingCalls: [],
   upComingEvents: [],
-  events:[]
+  events:[],
+  allContacts: true
 }
 
 function appReducer( state = initialState , action){
@@ -14,16 +15,22 @@ function appReducer( state = initialState , action){
         loggedIn: true
       }
     case 'SET_CONTACTS':
-    const contactsCopy = action.contacts
+      const contactsCopy = action.contacts
       return {
         ...state,
         contacts: contactsCopy
       }
     case 'SET_EVENTS':
-    const eventsCopy = action.events
+      const eventsCopy = action.events
       return {
         ...state,
         events: eventsCopy
+      }
+    case 'SHOW_CONTACT':
+      console.log("we here")
+      return {
+        ...state,
+        allContacts: !state.allContacts
       }
     default:
       return state
