@@ -20,6 +20,16 @@ class MainDisplay extends React.Component{
   // step 60 removes the minutes from the the input field
   // <input type='date' onChange={this.handleChange} name="date"></input>
 
+  // handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   console.log(`submitted`)
+  // }
+  // <form onSubmit={this.handleSubmit}>
+  //   <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
+  //   <input type='date' onChange={this.handleChange} name="date"></input>
+  //   <button type='submit'>Complete Call</b  utton>
+  // </form>
+
   render(){
 
     return(
@@ -30,9 +40,7 @@ class MainDisplay extends React.Component{
           <ul>
             <li>
               call 1
-              <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-              <input type='date' onChange={this.handleChange} name="date"></input>
-              <button>Complete Call</button>
+                <button type='submit'>Complete Call</button>
             </li>
           </ul>
         </Segment>
