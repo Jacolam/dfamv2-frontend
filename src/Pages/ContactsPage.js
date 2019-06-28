@@ -17,6 +17,7 @@ class ContactsPage extends React.Component{
       // console.log(contact)
       return <ul><ContactCard
         key={contact.contactee.username}
+        id={contact.contactee.id}
         username={contact.contactee.username}
         meetCycle={contact.meet_cycle}
         callCycle={contact.call_cycle}

@@ -8,7 +8,8 @@ class IndivContact extends React.Component{
   state = {
     time:'',
     date:'',
-    type:false
+    log_type:false,
+    attendee_id: ''
   }
 
   componentDidMount(){
@@ -19,6 +20,9 @@ class IndivContact extends React.Component{
     this.setState({
       [e.target.name]: e.target.value
     }, () => console.log(this.state))
+    this.setState({
+      attendee_id: this.props.state.detailedContact.id
+    })
   }
 
   handleClick = () => {
@@ -28,18 +32,20 @@ class IndivContact extends React.Component{
   handleSubmit = (e) => {
     e.preventDefault()
 
+
     console.log(`submitted`)
     console.log(this.state)
 
     fetch('http://localhost:3000/api/v1/logs', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": localStorage.getItem("token")
-      },
-      body: JSON.stringify(this.state)
-    }
-    )
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": localStorage.getItem("token")
+        },
+        body: JSON.stringify(this.state)
+      }
+    ).then(res => res.json())
+    .then(console.log)
 
   }
 
@@ -51,7 +57,7 @@ class IndivContact extends React.Component{
         <form onSubmit={this.handleSubmit}>
           <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
           <input type='date' onChange={this.handleChange} name="date"></input>
-          <select name='type' onChange={this.handleChange}>
+          <select name='log_type' onChange={this.handleChange}>
             <option value='true'>Call</option>
             <option value='false'>Meet Up</option>
           </select>
