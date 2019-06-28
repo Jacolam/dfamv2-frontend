@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import MainDisplay from '../Components/MainDisplay.js'
 import hasToken from '../hasToken.js'
+import { Icon } from 'semantic-ui-react'
 
 class HomeContainer extends React.Component{
 
@@ -17,18 +18,18 @@ class HomeContainer extends React.Component{
         "Authorization": localStorage.getItem("token")
       }
     }).then(res => res.json())
-      .then(contacts => {
-    console.log(contacts)
-    this.props.setContacts(contacts)
+      .then(data => {
+    console.log(data)
+    this.props.setContacts(data.contacts)
     })
   }
 
   render(){
     return(
       <div>
-      Home Page
-      <NavBar/>
-      <MainDisplay/>
+        Home Page
+        <NavBar/>
+        <MainDisplay/>
       </div>
     )
   }

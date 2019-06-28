@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Container } from 'semantic-ui-react'
 
 class SignUpPage extends React.Component{
 
@@ -36,7 +37,7 @@ class SignUpPage extends React.Component{
 
   render(){
     return(
-      <div>
+      <Container textAlign='center'>
         Create An Account
         <form onSubmit={this.handleSubmit}>
           Username
@@ -51,12 +52,12 @@ class SignUpPage extends React.Component{
               type='password'
               name='password'
               onChange={this.handleChange}
-            />
-            <button type='submit'>Submit</button>
+            /><br/>
+          <button type='submit'>Create Account</button>
         </form>
 
         <Link to='/login'> Already have an account? </Link>
-      </div>
+      </Container>
     )
   }
 }

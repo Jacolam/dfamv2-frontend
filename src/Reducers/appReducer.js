@@ -3,7 +3,9 @@ const initialState = {
   contacts: [],
   upComingCalls: [],
   upComingEvents: [],
-  events:[]
+  events:[],
+  allContacts: true,
+  detailedContact:{}
 }
 
 function appReducer( state = initialState , action){
@@ -14,16 +16,27 @@ function appReducer( state = initialState , action){
         loggedIn: true
       }
     case 'SET_CONTACTS':
-    const contactsCopy = action.contacts
+      const contactsCopy = action.contacts
       return {
         ...state,
         contacts: contactsCopy
       }
     case 'SET_EVENTS':
-    const eventsCopy = action.events
+      const eventsCopy = action.events
       return {
         ...state,
         events: eventsCopy
+      }
+    case 'SHOW_CONTACT':
+    // hide and show indiv contacts or all contacts
+      return {
+        ...state,
+        allContacts: !state.allContacts
+      }
+    case 'DETAILED_CONTACT':
+      return {
+        ...state,
+        detailedContact: action.contact
       }
     default:
       return state
