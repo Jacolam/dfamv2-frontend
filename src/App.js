@@ -6,7 +6,6 @@ import SignUpPage from './Pages/SignUpPage.js';
 import HomePage from './Pages/HomePage';
 import EventsPage from './Pages/EventsPage';
 import ContactsPage from './Pages/ContactsPage';
-import ContactPage from './Pages/ContactPage';
 import { Container } from 'semantic-ui-react'
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
         <Route path='/main' component={HomePage}/>
         <Route path='/events' component={EventsPage}/>
         <Route path='/contacts' component={ContactsPage}/>
-        <Route path='/contact-page' component={ContactPage}/>
       </Switch>
     </Container>
   );

@@ -34,8 +34,6 @@ function appReducer( state = initialState , action){
         allContacts: !state.allContacts
       }
     case 'DETAILED_CONTACT':
-      console.log('im hit')
-      console.log(action.contact)
       return {
         ...state,
         detailedContact: action.contact

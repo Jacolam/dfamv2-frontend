@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import ContactCard from '../Components/ContactCard.js'
+import IndivContact from '../Components/IndivContact.js'
 import hasToken from '../hasToken.js'
 
 
@@ -27,14 +28,14 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-    console.log(this.props.state.detailedContact)
+    console.log(this.props.state.allContacts)
+    const allContacts = this.props.state.allContacts
     return(
       <div>
       Contacts Page
       <NavBar/>
       Looking for someone?
-
-      {this.renderContacts()}
+      { allContacts ? this.renderContacts() : <IndivContact />}
       </div>
     )
   }

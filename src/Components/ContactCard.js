@@ -30,10 +30,9 @@ class ContactCard extends React.Component{
 
   capitalize = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  }
 
   render(){
-    console.log(this.props)
     return(
       <Card onClick={ (e) => this.handleClick(e,this.props)} >
         <Image src={this.props.avatar} />
