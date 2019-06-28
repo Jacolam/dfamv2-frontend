@@ -27,7 +27,7 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-    console.log(this.props.state.allContacts)
+    console.log(this.props.state.detailedContact)
     return(
       <div>
       Contacts Page

@@ -17,12 +17,12 @@ class ContactCard extends React.Component{
         window.open(this.props.facebook)
       break;
       default:
-      // need a state for allcontacts: true
       //defaults needs to set state for contact to this props
       //render the contact componet with this information
       // hiding the render contacts
       // console.log('before envoked',this.props)
       this.props.showContact()
+      this.props.detailedContact(props)
       // console.log(this.props)
 
     }
@@ -60,7 +60,8 @@ class ContactCard extends React.Component{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    showContact: () => dispatch({ type: 'SHOW_CONTACT'})
+    showContact: () => dispatch({ type: 'SHOW_CONTACT'}),
+    detailedContact: (contact) => dispatch({ type: 'DETAILED_CONTACT',contact}),
   }
 }
 export default connect(null,mapDispatchToProps)(ContactCard)

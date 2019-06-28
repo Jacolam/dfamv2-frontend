@@ -4,7 +4,8 @@ const initialState = {
   upComingCalls: [],
   upComingEvents: [],
   events:[],
-  allContacts: true
+  allContacts: true,
+  detailedContact:{}
 }
 
 function appReducer( state = initialState , action){
@@ -27,10 +28,17 @@ function appReducer( state = initialState , action){
         events: eventsCopy
       }
     case 'SHOW_CONTACT':
-      console.log("we here")
+    // hide and show indiv contacts or all contacts
       return {
         ...state,
         allContacts: !state.allContacts
+      }
+    case 'DETAILED_CONTACT':
+      console.log('im hit')
+      console.log(action.contact)
+      return {
+        ...state,
+        detailedContact: action.contact
       }
     default:
       return state
