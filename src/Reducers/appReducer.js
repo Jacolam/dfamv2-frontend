@@ -3,9 +3,10 @@ const initialState = {
   contacts: [],
   upComingCalls: [],
   upComingEvents: [],
-  events:[],
+  events: [],
   allContacts: true,
-  detailedContact:{}
+  detailedContact:{},
+  logs: []
 }
 
 function appReducer( state = initialState , action){
@@ -26,6 +27,14 @@ function appReducer( state = initialState , action){
       return {
         ...state,
         events: eventsCopy
+      }
+    case 'SET_LOGS':
+    // need to combine all the logs that i created, and all the logs that people have created for me
+      const logsCopy = action.logs.concat(action.inverse_logs)
+      console.log(logsCopy)
+      return {
+        ...state,
+        logs: logsCopy
       }
     case 'SHOW_CONTACT':
     // hide and show indiv contacts or all contacts

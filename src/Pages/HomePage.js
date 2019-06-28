@@ -21,10 +21,12 @@ class HomeContainer extends React.Component{
       .then(data => {
     console.log(data)
     this.props.setContacts(data.contacts)
+    this.props.setLogs(data.logs,data.inverse_logs)
     })
   }
 
   render(){
+    console.log(this.props.state)
     return(
       <div>
         Home Page
@@ -37,7 +39,8 @@ class HomeContainer extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts})
+    setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts}),
+    setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs})
   }
 }
 const mapStateToProps = (state) => {

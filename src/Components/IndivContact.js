@@ -58,8 +58,8 @@ class IndivContact extends React.Component{
           <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
           <input type='date' onChange={this.handleChange} name="date"></input>
           <select name='log_type' onChange={this.handleChange}>
-            <option value='true'>Call</option>
-            <option value='false'>Meet Up</option>
+            <option value={!!false}>Meet Up</option>
+            <option value={!!true}>Call</option>
           </select>
           <button type='submit'>Create event </button>
         </form>
