@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import MainDisplay from '../Components/MainDisplay.js'
 import hasToken from '../hasToken.js'
+import { Icon } from 'semantic-ui-react'
 
 class HomeContainer extends React.Component{
 
@@ -26,9 +27,9 @@ class HomeContainer extends React.Component{
   render(){
     return(
       <div>
-      Home Page
-      <NavBar/>
-      <MainDisplay/>
+        Home Page
+        <NavBar/>
+        <MainDisplay/>
       </div>
     )
   }

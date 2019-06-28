@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image , Icon } from 'semantic-ui-react'
 // import { Link } from 'react-router-dom'
 
 
@@ -16,18 +16,31 @@ class ContactCard extends React.Component{
       case "Facebook":
         window.open(this.props.facebook)
       break;
+      default:
+      console.log('default', e.target.id)
+      console.log(this.props)
+
     }
   }
+
+  capitalize = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
   render(){
     console.log(this.props)
     return(
-      <Card>
-        <Image src={this.props.avatar}/>
-        <Card.Header>{this.props.username}</Card.Header>
-        <Card.Meta>
-          Call every {this.props.callCycle}<br/>
+      <Card onClick={this.handleClick} id={this.props.username}>
+        <Image src={this.props.avatar} id={this.props.username}/>
+        <Card.Header id={this.props.username}>
+          {this.capitalize(this.props.username)}
+        </Card.Header>
+        <Card.Meta >
+          Call every {this.props.callCycle}
+          <Icon color='black' name='phone' />
+          <br/>
           Meet every {this.props.meetCycle}
+          <Icon color='brown' name='coffee' />
         </Card.Meta>
         <Card.Description>
           <button>Log Call</button>

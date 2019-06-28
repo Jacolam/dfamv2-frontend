@@ -13,11 +13,12 @@ class ContactPage extends React.Component{
   render(){
     return(
       <div>
+        indiv profile
         <NavBar/>
-         {this.renderContacts()}
+      this should show indiv profile of the user that we clicked
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(ContactPage)
+export default connect()(ContactPage)

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Container } from 'semantic-ui-react'
 
 class LogInPage extends React.Component{
 
@@ -43,7 +44,7 @@ class LogInPage extends React.Component{
 
   render(){
     return(
-      <div>
+      <Container textAlign='center'>
       Welcome to D-FAM
       <br/>
       <form onSubmit={this.handleSubmit}>
@@ -64,7 +65,7 @@ class LogInPage extends React.Component{
         <button type='submit'>Submit</button>
       </form>
       <Link to='/signup'> Don't have an account? </Link>
-      </div>
+      </Container>
     )
   }
 }

@@ -16,15 +16,15 @@ class MainDisplay extends React.Component{
   }
 
   // <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-  // step 60 removes the minutes from the the input field 
+  // step 60 removes the minutes from the the input field
   // <input type='date' onChange={this.handleChange} name="date"></input>
 
   render(){
 
     return(
-      <div>
+      <div style={{border: "solid"}}>
       MainDisplay Container
-        <div>
+        <div style={{border: "solid"}}>
           upcoming calls
           <ul>
             <li>
@@ -35,7 +35,7 @@ class MainDisplay extends React.Component{
             </li>
           </ul>
         </div>
-        <div>
+        <div style={{border: "solid"}}>
           up coming events
           <ul>
             <li>

@@ -1,6 +1,7 @@
 import React from 'react'
 // import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react'
 
 class NavBar extends React.Component{
 
@@ -12,15 +13,18 @@ class NavBar extends React.Component{
 
   render(){
     return(
-      <div style={{border: "solid"}}>
-        NavBar Container
-        <ul>
+      <Menu>
+        <Menu.Item>
           <Link to="/main">Home</Link><br/>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/contacts">Contacts</Link><br/>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/events">Events</Link><br/>
-        </ul>
-        <button onClick={this.signOut}>Sign Out</button>
-      </div>
+        </Menu.Item>
+        <Menu.Item name='Sign Out' onClick={this.signOut} />
+      </Menu>
     )
   }
 }
