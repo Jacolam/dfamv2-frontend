@@ -26,7 +26,7 @@ class HomeContainer extends React.Component{
   }
 
   render(){
-    console.log(this.props.state)
+    // console.log(this.props.state)
     return(
       <div>
         Home Page

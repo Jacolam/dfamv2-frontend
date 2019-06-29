@@ -29,13 +29,11 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-    console.log(this.props.state.allContacts)
     const allContacts = this.props.state.allContacts
     return(
       <div>
       Contacts Page
       <NavBar/>
-      Looking for someone?
       { allContacts ? this.renderContacts() : <IndivContact />}
       </div>
     )

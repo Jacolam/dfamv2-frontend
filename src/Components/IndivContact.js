@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import hasToken from '../hasToken.js'
+import moment from 'moment'
 
 
 class IndivContact extends React.Component{
@@ -33,8 +34,7 @@ class IndivContact extends React.Component{
     e.preventDefault()
 
 
-    console.log(`submitted`)
-    console.log(this.state)
+    const datetime = moment(this.state.date + " " + this.state.time)
 
     fetch('http://localhost:3000/api/v1/logs', {
         method: 'POST',
@@ -42,10 +42,12 @@ class IndivContact extends React.Component{
           'Content-Type': 'application/json',
           "Authorization": localStorage.getItem("token")
         },
-        body: JSON.stringify(this.state)
+        body: JSON.stringify({ ...this.state, datetime })
       }
     ).then(res => res.json())
-    .then(console.log)
+    .then(data => {
+      console.log(moment(data.datetime)._d)
+    })
 
   }
 
@@ -58,8 +60,8 @@ class IndivContact extends React.Component{
           <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
           <input type='date' onChange={this.handleChange} name="date"></input>
           <select name='log_type' onChange={this.handleChange}>
-            <option value={!!false}>Meet Up</option>
-            <option value={!!true}>Call</option>
+            <option value={false}>Meet Up</option>
+            <option value={true}>Call</option>
           </select>
           <button type='submit'>Create event </button>
         </form>
