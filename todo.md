@@ -15,3 +15,10 @@ needs to send fetch request from every page if token is present
 hasToken function
   -needs to send initial fetch request from the function
   -after checking if token if present, send request for all information on all page, allowing for powerful SPA app
+
+dropdown for log fetch, on change is not always working as intended
+
+add search, to look for new friends and add them
+to contacts,
+
+filter through your contacts
