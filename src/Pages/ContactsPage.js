@@ -10,11 +10,20 @@ class ContactsPage extends React.Component{
 
   componentDidMount(){
     hasToken()
+    //duplicated code, using for dev purposes, needs to send fetch request from whatever page, to retrieve infomation
+    fetch('http://localhost:3000/api/v1/contacts', {
+      headers: {
+        "Authorization": localStorage.getItem("token")
+      }
+    }).then(res => res.json())
+      .then(data => {
+        this.props.setContacts(data.contacts)
+        this.props.setLogs(data.logs,data.inverse_logs)
+    })
   }
 
   renderContacts = () => {
     return this.props.state.contacts.map((contact)=>{
-      // console.log(contact)
       return <ul><ContactCard
         key={contact.contactee.username}
         id={contact.contactee.id}
@@ -32,9 +41,9 @@ class ContactsPage extends React.Component{
     const allContacts = this.props.state.allContacts
     return(
       <div>
-      Contacts Page
-      <NavBar/>
-      { allContacts ? this.renderContacts() : <IndivContact />}
+        Contacts Page
+        <NavBar/>
+        { allContacts ? this.renderContacts() : <IndivContact />}
       </div>
     )
   }
@@ -44,4 +53,12 @@ const mapStateToProps = (state) => {
   return {state}
 }
 
-export default connect(mapStateToProps)(ContactsPage)
+//duplicated code, using for dev purposes, needs to send fetch request from whatever page, to retrieve infomation
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts}),
+    setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs})
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ContactsPage)

@@ -31,7 +31,6 @@ function appReducer( state = initialState , action){
     case 'SET_LOGS':
     // need to combine all the logs that i created, and all the logs that people have created for me
       const logsCopy = action.logs.concat(action.inverse_logs)
-      console.log(logsCopy)
       return {
         ...state,
         logs: logsCopy
@@ -43,10 +42,15 @@ function appReducer( state = initialState , action){
         allContacts: !state.allContacts
       }
     case 'DETAILED_CONTACT':
-    console.log(action.contact)
       return {
         ...state,
         detailedContact: action.contact
+      }
+    case 'ADD_LOG':
+      const addLog = [...state.logs,action.log]
+      return {
+        ...state,
+        logs: addLog
       }
     default:
       return state
