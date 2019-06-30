@@ -8,10 +8,6 @@ import { Icon } from 'semantic-ui-react'
 class HomeContainer extends React.Component{
 
   componentDidMount(){
-    // if (!localStorage.token){
-    //   // if the user does not have a token, redirect to Log In
-    //   window.location.replace(`http://localhost:3001/login`)
-    // } refactored into hasToken
     hasToken()
     fetch('http://localhost:3000/api/v1/contacts', {
       headers: {
@@ -19,9 +15,8 @@ class HomeContainer extends React.Component{
       }
     }).then(res => res.json())
       .then(data => {
-    console.log(data)
-    this.props.setContacts(data.contacts)
-    this.props.setLogs(data.logs,data.inverse_logs)
+        this.props.setContacts(data.contacts)
+        this.props.setLogs(data.logs,data.inverse_logs)
     })
   }
 
