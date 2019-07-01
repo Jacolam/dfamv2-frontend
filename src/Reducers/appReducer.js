@@ -52,6 +52,22 @@ function appReducer( state = initialState , action){
         ...state,
         logs: addLog
       }
+    case 'SET_UPCOMING_CALLS':
+      const upComingCalls = action.upcoming.filter((upcoming)=>{
+        return upcoming.log_type === true
+      })
+      return {
+        ...state,
+        upComingCalls: upComingCalls
+      }
+    case 'SET_UPCOMING_EVENTS':
+      const upComingEvents = action.upcoming.filter((upcoming)=>{
+        return upcoming.log_type === false
+      })
+      return {
+        ...state,
+        upComingEvents: upComingEvents
+      }
     default:
       return state
   }

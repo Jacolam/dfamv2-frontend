@@ -5,13 +5,16 @@ import moment from 'moment'
 
 class LogCard extends React.Component {
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     // console.log('log type', this.props.attributes.log_type)
     const date = moment(this.props.attributes.datetime).format('MMM DD YYYY')
+    const time = moment(this.props.attributes.datetime).format('H:mm A')
+
     return(
       <div>
         <Segment>
-          {`${date}, ${moment(date).fromNow()}`}<br/>
+          {`${date},`}<br/>
+          {`@ ${time}, ${moment(date).fromNow()}`}<br/>
           {this.props.attributes.completed ? 'Completed' : <button> Complete </button>}
           <button value='EDIT'> Edit</button>
           <button value='DELETE'> Delete</button>
