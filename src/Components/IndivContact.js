@@ -73,12 +73,16 @@ class IndivContact extends React.Component{
     })
   }
 
+  capitalize = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render(){
 
     return(
       <div>
         <Segment>
-          {this.props.state.detailedContact.username}<br/>
+          {this.capitalize(this.props.state.detailedContact.username)}<br/>
           call every {this.props.state.detailedContact.callCycle}
 
           <form onSubmit={this.handleSubmit}>
