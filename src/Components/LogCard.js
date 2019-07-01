@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import moment from 'moment'
 

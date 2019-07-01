@@ -18,12 +18,10 @@ class ContactCard extends React.Component{
       break;
       default:
       //defaults needs to set state for contact to this props
-      //render the contact componet with this information
+      //render the contact component with this information
       // hiding the render contacts
-      // console.log('before envoked',this.props)
       this.props.showContact()
       this.props.detailedContact(props)
-      // console.log(this.props)
 
     }
   }
@@ -47,8 +45,6 @@ class ContactCard extends React.Component{
           <Icon color='brown' name='coffee' />
         </Card.Meta>
         <Card.Description>
-          <button>Log Call</button>
-          <button>Meet up</button>
           <button onClick={this.handleClick}>Twitter</button>
           <button onClick={this.handleClick}>Facebook</button>
         </Card.Description>

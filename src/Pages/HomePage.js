@@ -3,27 +3,10 @@ import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import MainDisplay from '../Components/MainDisplay.js'
 import hasToken from '../hasToken.js'
-import { Icon } from 'semantic-ui-react'
+// import { Icon } from 'semantic-ui-react'
 import moment from 'moment'
 
 class HomeContainer extends React.Component{
-
-  //works for logs that are upcoming,
-  //returning undefined needs to be fixed
-  // sortedDate =(arr) => { arr.sort((a,b) => {
-  //     const aToArr = moment(a.datetime).fromNow().split(" ")
-  //     const bToArr = moment(b.datetime).fromNow().split(" ")
-  //     // selecting the time from today
-  //     const aToInt = parseInt(aToArr[1])
-  //     const bToInt = parseInt(bToArr[1])
-  //
-  //     if(aToInt > bToInt){
-  //       return -1
-  //     } else {
-  //       return 1
-  //     }
-  //   })
-  // }
 
   componentDidMount(){
     hasToken()
@@ -40,15 +23,9 @@ class HomeContainer extends React.Component{
           const logToArr = moment(log.datetime).fromNow().split(" ")
           return logToArr[0] === 'in'
         })
-        // console.log(upComing)
+        
         const sortedUpComing = upComing.sort((a,b) => {
-          const aToArr = moment(a.datetime).fromNow().split(" ")
-          const bToArr = moment(b.datetime).fromNow().split(" ")
-          // selecting the time from today
-          const aToInt = parseInt(aToArr[1])
-          const bToInt = parseInt(bToArr[1])
-
-          if(aToInt > bToInt){
+          if(a.datetime < b.datetime){
             return -1
           } else {
             return 1

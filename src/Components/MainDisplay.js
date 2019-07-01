@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
+import LogCard from './LogCard.js'
 
 
 class MainDisplay extends React.Component{
@@ -16,33 +17,31 @@ class MainDisplay extends React.Component{
     }, () => console.log(this.state))
   }
 
-  // <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-  // step 60 removes the minutes from the the input field
-  // <input type='date' onChange={this.handleChange} name="date"></input>
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log(`submitted`)
+  renderCalls = () => {
+    return this.props.state.upComingCalls.map ((call)=>{
+      return <LogCard attributes={call} />
+    })
+  }
+  // renderEvents = () => {
+  //
   // }
-  // <form onSubmit={this.handleSubmit}>
-  //   <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-  //   <input type='date' onChange={this.handleChange} name="date"></input>
-  //   <button type='submit'>Complete Call</b  utton>
-  // </form>
 
   render(){
+    console.log(this.props.state)
 
     return(
       <Segment>
       Dashboard
         <Segment>
+          <h4>Happening today</h4>
+            <ul>
+              <li>
+              </li>
+            </ul>
+        </Segment>
+        <Segment>
           <h4>Upcoming Calls</h4>
-          <ul>
-            <li>
-              call 1
-                <button type='submit'>Complete Call</button>
-            </li>
-          </ul>
+              {this.renderCalls()}
         </Segment>
         <Segment>
           <h4>Upcoming Events</h4>
@@ -60,9 +59,7 @@ class MainDisplay extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return {
-
-  }
+  return {state}
 }
 
 export default connect(mapStateToProps)(MainDisplay)

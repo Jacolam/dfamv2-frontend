@@ -1,5 +1,9 @@
 <!-- Create a function that checks for token -->
 <!-- -Extract out and call function in each location ( repeated 6 times so far ) -->
+<!-- filter logs by calls or meetups -->
+
+<!-- needs to send fetch request from every page if token is present
+temp fix -->
 
 **functionality
   signup page
@@ -7,12 +11,11 @@
     -auto sign in after signing up
     -not currently receiving token at the end of the request
 
-  Login page
+    <!-- Login page
     -needs to be more descriptive with error messages
-      -between wrong password and that user does not exist
-      -better user experience
-
-  needs to send fetch request from every page if token is present
+    -between wrong password and that user does not exist
+    -better user experience
+    -->
 
   hasToken function
     -needs to send initial fetch request from the function
@@ -23,7 +26,8 @@
 
   filter through your contacts
 
-  filter logs by calls or meetups
+
+  make all buttons functional
 
 **styling
 
@@ -34,3 +38,11 @@
 
 **extra
   grab a random array of default profile pictures
+
+  adding honeypots ,
+    one for login page
+      -false field pin
+    one for sign up page
+      -false field -password confirmation
+
+  show password function
