@@ -14,7 +14,7 @@ class LogCard extends React.Component {
       <div>
         <Segment>
           {`${date},`}<br/>
-          {`@ ${time}, ${moment(date).fromNow()}`}<br/>
+          {`@ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
           {this.props.attributes.completed ? 'Completed' : <button> Complete </button>}
           <button value='EDIT'> Edit</button>
           <button value='DELETE'> Delete</button>

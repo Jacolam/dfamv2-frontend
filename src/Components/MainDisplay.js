@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import LogCard from './LogCard.js'
+import moment from 'moment'
 
 
 class MainDisplay extends React.Component{
@@ -28,9 +29,20 @@ class MainDisplay extends React.Component{
     })
   }
 
-  renderTodayLogs = () => {
-
-  }
+  // renderTodayLogs = () => {
+  //   console.log(this.props.state)
+  //   const todayLogs = this.props.state.logs.filter( log => {
+  //     const date = moment(log.datetime).format('MMM DD YYYY')
+  //     const timeFromNow = moment(log.datetime).fromNow()
+  //     return typeof parseInt(timeFromNow.split(" ")[0]) === 'number'
+  //   })
+  //   console.log(todayLogs)
+  //   <Segment>
+  //     <h4>Happening today</h4>
+  //     {this.renderTodayLogs()}
+  //   </Segment>
+  //
+  // }
 
   render(){
     // console.log(this.props.state)
@@ -38,13 +50,6 @@ class MainDisplay extends React.Component{
     return(
       <Segment>
       Dashboard
-        <Segment>
-          <h4>Happening today</h4>
-            <ul>
-              <li>
-              </li>
-            </ul>
-        </Segment>
         <Segment>
           <h4>Upcoming Calls</h4>
               {this.renderCalls()}
