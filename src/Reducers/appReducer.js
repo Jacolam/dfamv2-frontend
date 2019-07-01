@@ -59,6 +59,20 @@ function appReducer( state = initialState , action){
         ...state,
         logs: addLog
       }
+    case 'ADD_USER_TO_CONTACTS':
+      console.log('adding the reducer')
+      // const addLog = [...state.logs,action.log]
+      return {
+        // ...state,
+        // logs: addLog
+      }
+    case 'REMOVE_USER_FROM_PEOPLE':
+      console.log('revmoing the reducer')
+      // const addLog = [...state.logs,action.log]
+      return {
+        // ...state,
+        // logs: addLog
+      }
     case 'SET_UPCOMING_CALLS':
       const upComingCalls = action.upcoming.filter((upcoming)=>{
         return upcoming.log_type === true

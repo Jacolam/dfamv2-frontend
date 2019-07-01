@@ -22,7 +22,6 @@ class SearchPage extends React.Component{
     return this.props.state.people.map( (person)=>{
       return <AddContactCard
         key={person.username}
-        id={person.id}
         username={person.username}
         avatar={person.avatar}
       />
