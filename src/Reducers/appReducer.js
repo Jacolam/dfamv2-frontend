@@ -1,6 +1,7 @@
 const initialState = {
   loggedIn: false,
   contacts: [],
+  people: [],
   upComingCalls: [],
   upComingEvents: [],
   events: [],
@@ -17,16 +18,15 @@ function appReducer( state = initialState , action){
         loggedIn: true
       }
     case 'SET_CONTACTS':
-      const contactsCopy = action.contacts
       return {
         ...state,
-        contacts: contactsCopy
+        contacts: action.contacts
       }
     case 'SET_EVENTS':
-      const eventsCopy = action.events
+      // const eventsCopy = action.events
       return {
         ...state,
-        events: eventsCopy
+        events: action.events
       }
     case 'SET_LOGS':
     // need to combine all the logs that i created, and all the logs that people have created for me
@@ -35,8 +35,12 @@ function appReducer( state = initialState , action){
         ...state,
         logs: logsCopy
       }
+    case 'SET_UNADDED':
+      return {
+        ...state,
+        people: action.unadded
+      }
     case 'SHOW_CONTACT':
-    // hide and show indiv contacts or all contacts
       return {
         ...state,
         allContacts: !state.allContacts
@@ -51,6 +55,28 @@ function appReducer( state = initialState , action){
       return {
         ...state,
         logs: addLog
+      }
+    case 'ADD_USER_TO_CONTACTS':
+      const contactsCopy = [...state.contacts, action.user]
+      return {...state,
+        contactsCopy
+      }
+    case 'REMOVE_USER_FROM_PEOPLE':
+      const peopleCopy = state.people.filter((person)=>{
+        return person.username !== action.user.username
+      })
+      return {
+        ...state,
+        people: peopleCopy
+      }
+    case 'REMOVE_CONTACT':
+      const rcontactCopy = state.contacts.filter((contact)=>{
+        // debugger
+        return contact.contactee.id !== action.contact.id
+      })
+      return {
+        ...state,
+        contacts: rcontactCopy
       }
     case 'SET_UPCOMING_CALLS':
       const upComingCalls = action.upcoming.filter((upcoming)=>{

@@ -4,6 +4,7 @@ import NavBar from '../Components/NavBar.js'
 import ContactCard from '../Components/ContactCard.js'
 import IndivContact from '../Components/IndivContact.js'
 import hasToken from '../hasToken.js'
+import { Card } from 'semantic-ui-react'
 
 
 class ContactsPage extends React.Component{
@@ -24,7 +25,7 @@ class ContactsPage extends React.Component{
 
   renderContacts = () => {
     return this.props.state.contacts.map((contact)=>{
-      return <ul><ContactCard
+      return <ContactCard
         key={contact.contactee.username}
         id={contact.contactee.id}
         username={contact.contactee.username}
@@ -33,19 +34,28 @@ class ContactsPage extends React.Component{
         avatar={contact.contactee.avatar}
         twitter={contact.contactee.twitter}
         facebook={contact.contactee.facebook}
-        /></ul>
+        />
     })
   }
 
   render(){
+    
     const allContacts = this.props.state.allContacts
+
     return(
       <div>
         Contacts Page
         <NavBar/>
-        { allContacts ? this.renderContacts() : <IndivContact />}
+        { allContacts ? (
+          <Card.Group itemsPerRow={3}>
+            {this.renderContacts()}
+          </Card.Group>
+          ):(
+          <IndivContact />
+        )}
       </div>
     )
+
   }
 }
 

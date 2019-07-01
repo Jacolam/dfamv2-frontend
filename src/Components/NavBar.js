@@ -23,6 +23,12 @@ class NavBar extends React.Component{
         <Menu.Item>
           <Link to="/events">Events</Link><br/>
         </Menu.Item>
+        <Menu.Item>
+          <Link to="/search">Search</Link><br/>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/settings">Settings</Link><br/>
+        </Menu.Item>
         <Menu.Item name='Sign Out' onClick={this.signOut} />
       </Menu>
     )
