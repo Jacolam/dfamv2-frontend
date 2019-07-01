@@ -19,7 +19,7 @@ class SearchPage extends React.Component{
   }
 
   renderPeople = () => {
-    return this.props.state.people.map( (person)=>{
+    return this.props.state.people.map((person)=>{
       return <AddContactCard
         key={person.username}
         username={person.username}
@@ -29,6 +29,8 @@ class SearchPage extends React.Component{
   }
 
   render(){
+
+    // console.log(this.props.state.people)
     return(
       <div>
       Search Page

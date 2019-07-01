@@ -16,6 +16,22 @@ class ContactCard extends React.Component{
       case "Facebook":
         window.open(this.props.facebook)
       break;
+      case "Remove":
+
+        fetch('http://localhost:3000/api/v1/removecontact', {
+          method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("token")
+          },
+          body: JSON.stringify(this.props)
+        }).then(res => res.json())
+          .then(data => {
+          // debugger
+          this.props.removeContact(this.props)
+          })
+
+      break;
       default:
       //defaults needs to set state for contact to this props
       //render the contact component with this information
@@ -43,9 +59,10 @@ class ContactCard extends React.Component{
           Meet every {this.props.meetCycle}
           <Icon color='brown' name='coffee' />
         </Card.Meta>
-        <Card.Description>
+        <Card.Description textAlign='center'>
           <button onClick={this.handleClick}>Twitter</button>
           <button onClick={this.handleClick}>Facebook</button>
+          <button onClick={this.handleClick}>Remove</button>
         </Card.Description>
       </Card>
     )
@@ -56,6 +73,7 @@ const mapDispatchToProps = dispatch =>{
   return{
     showContact: () => dispatch({ type: 'SHOW_CONTACT'}),
     detailedContact: (contact) => dispatch({ type: 'DETAILED_CONTACT',contact}),
+    removeContact: (contact) => dispatch({ type: 'REMOVE_CONTACT',contact}),
   }
 }
 export default connect(null,mapDispatchToProps)(ContactCard)

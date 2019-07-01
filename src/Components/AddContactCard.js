@@ -11,23 +11,22 @@ class AddContactCard extends React.Component{
   }
 
   handleClick = (e) => {
-    console.log (e , this.props)
 
     fetch('http://localhost:3000/api/v1/addperson', {
       method: "POST",
       headers: {
+        'Content-Type': 'application/json',
         "Authorization": localStorage.getItem("token")
       },
-      body: JSON.stringify(this.props)
+      body: JSON.stringify({username: this.props.username})
     }).then(res => res.json())
-      .then(console.log)
-    // this.props.addUser(this.props.username)
-    //wait for fetch request and recieve the data after creating a contact instanace
-    // debugger
+      .then(data => {
+        this.props.addUser(data)
+      })
+      
   }
 
   render(){
-    console.log(this.props)
     return(
       <Card>
         <Image src={this.props.avatar} />
@@ -42,9 +41,9 @@ class AddContactCard extends React.Component{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    addUser: (username) => {
-      dispatch({ type: 'ADD_USER_TO_CONTACTS',username})
-      dispatch({ type: 'REMOVE_USER_FROM_PEOPLE',username})
+    addUser: (user) => {
+      dispatch({ type: 'ADD_USER_TO_CONTACTS',user})
+      dispatch({ type: 'REMOVE_USER_FROM_PEOPLE',user})
 
     }
   }

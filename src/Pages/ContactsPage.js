@@ -39,7 +39,9 @@ class ContactsPage extends React.Component{
   }
 
   render(){
+    
     const allContacts = this.props.state.allContacts
+
     return(
       <div>
         Contacts Page
@@ -53,6 +55,7 @@ class ContactsPage extends React.Component{
         )}
       </div>
     )
+
   }
 }
 
