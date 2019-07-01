@@ -22,7 +22,6 @@ class ContactCard extends React.Component{
       // hiding the render contacts
       this.props.showContact()
       this.props.detailedContact(props)
-
     }
   }
 

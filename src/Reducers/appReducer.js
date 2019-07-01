@@ -1,6 +1,7 @@
 const initialState = {
   loggedIn: false,
   contacts: [],
+  people: [],
   upComingCalls: [],
   upComingEvents: [],
   events: [],
@@ -34,6 +35,12 @@ function appReducer( state = initialState , action){
       return {
         ...state,
         logs: logsCopy
+      }
+    case 'SET_UNADDED':
+      const unaddedCopy = action.unadded
+      return {
+        ...state,
+        people: unaddedCopy
       }
     case 'SHOW_CONTACT':
     // hide and show indiv contacts or all contacts
