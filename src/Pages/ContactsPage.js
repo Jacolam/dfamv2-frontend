@@ -39,7 +39,7 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-    
+
     const allContacts = this.props.state.allContacts
 
     return(
@@ -47,7 +47,7 @@ class ContactsPage extends React.Component{
         Contacts Page
         <NavBar/>
         { allContacts ? (
-          <Card.Group itemsPerRow={3}>
+          <Card.Group itemsPerRow={5}>
             {this.renderContacts()}
           </Card.Group>
           ):(

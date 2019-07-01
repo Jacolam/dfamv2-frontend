@@ -36,7 +36,7 @@ class SearchPage extends React.Component{
       Search Page
         <NavBar />
         <Segment>
-          <Card.Group itemsPerRow={3}>
+          <Card.Group itemsPerRow={5}>
             {this.renderPeople()}
           </Card.Group>
         </Segment>

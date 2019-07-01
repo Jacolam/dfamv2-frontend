@@ -23,7 +23,7 @@ class HomeContainer extends React.Component{
           const logToArr = moment(log.datetime).fromNow().split(" ")
           return logToArr[0] === 'in'
         })
-        
+
         const sortedUpComing = upComing.sort((a,b) => {
           if(a.datetime < b.datetime){
             return -1

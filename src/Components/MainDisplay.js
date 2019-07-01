@@ -22,12 +22,18 @@ class MainDisplay extends React.Component{
       return <LogCard attributes={call} />
     })
   }
-  // renderEvents = () => {
-  //
-  // }
+  renderEvents = () => {
+    return this.props.state.upComingEvents.map ((call)=>{
+      return <LogCard attributes={call} />
+    })
+  }
+
+  renderTodayLogs = () => {
+
+  }
 
   render(){
-    console.log(this.props.state)
+    // console.log(this.props.state)
 
     return(
       <Segment>
@@ -45,13 +51,7 @@ class MainDisplay extends React.Component{
         </Segment>
         <Segment>
           <h4>Upcoming Events</h4>
-          <ul>
-            <li>
-              Meet up with Jane Doe @ 6PM for dinner @
-              {/*needs date, time , where ,contact id, complete:boolean*/}
-              <button>Complete Event</button>
-            </li>
-          </ul>
+            {this.renderEvents()}
         </Segment>
       </Segment>
     )
