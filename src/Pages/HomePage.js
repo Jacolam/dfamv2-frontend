@@ -16,6 +16,9 @@ class HomeContainer extends React.Component{
       }
     }).then(res => res.json())
       .then(data => {
+        console.log(data)
+        this.props.setContacts(data.contacts)
+        this.props.setLogs(data.logs,data.inverse_logs)
 
         const upComing = this.props.state.logs.filter( (log)=>{
           const logToArr = moment(log.datetime).fromNow().split(" ")
@@ -29,16 +32,14 @@ class HomeContainer extends React.Component{
             return 1
           }
         })
-
-        this.props.setContacts(data.contacts)
-        this.props.setLogs(data.logs,data.inverse_logs)
+        // debugger
         this.props.setUpComing(sortedUpComing)
 
     })
   }
 
   render(){
-    console.log(this.props.state)
+    // console.log(this.props)
     return(
       <div>
         Home Page

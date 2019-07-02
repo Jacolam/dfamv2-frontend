@@ -46,3 +46,7 @@ temp fix -->
       -false field -password confirmation
 
   show password function
+
+  implement calendar function
+  get all buttons working
+  filter function for contacts and people
