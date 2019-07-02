@@ -15,7 +15,6 @@ class HomeContainer extends React.Component{
       }
     }).then(res => res.json())
       .then(data => {
-        console.log(data)
         this.props.setContacts(data.contacts)
         this.props.setLogs(data.logs,data.inverse_logs)
 
