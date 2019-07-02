@@ -17,7 +17,6 @@ class IndivContact extends React.Component{
 
   componentDidMount(){
     hasToken()
-
     this.setState({
       attendee_id: this.props.state.detailedContact.id
     })
@@ -67,7 +66,6 @@ class IndivContact extends React.Component{
     })
 
     const bothLogs = userLog.concat(inverseUserLog)
-
     return bothLogs.map( (log) => {
       return <LogCard attributes={log} />
     })
@@ -108,14 +106,14 @@ class IndivContact extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {state}
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = dispatch =>{
   return{
-    showContact: () => dispatch({ type: 'SHOW_CONTACT'}),
-    addLog: (log) => dispatch({ type: 'ADD_LOG', log})
+    showContact: () => dispatch({type: 'SHOW_CONTACT'}),
+    addLog: (log) => dispatch({type: 'ADD_LOG', log})
   }
 }
 

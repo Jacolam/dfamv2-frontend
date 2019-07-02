@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import MainDisplay from '../Components/MainDisplay.js'
 import hasToken from '../hasToken.js'
-// import { Icon } from 'semantic-ui-react'
 import moment from 'moment'
 
 class HomeContainer extends React.Component{
@@ -16,7 +15,6 @@ class HomeContainer extends React.Component{
       }
     }).then(res => res.json())
       .then(data => {
-        console.log(data)
         this.props.setContacts(data.contacts)
         this.props.setLogs(data.logs,data.inverse_logs)
 
@@ -32,8 +30,7 @@ class HomeContainer extends React.Component{
             return 1
           }
         })
-        // debugger
-        this.props.setUpComing(sortedUpComing)
+        // this.props.setUpComing(sortedUpComing)
 
     })
   }
@@ -53,11 +50,11 @@ class HomeContainer extends React.Component{
 const mapDispatchToProps = (dispatch) => {
   return {
     setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts}),
-    setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs}),
-    setUpComing: (upcoming) => {
-      dispatch({type:"SET_UPCOMING_CALLS", upcoming})
-      dispatch({type:"SET_UPCOMING_EVENTS", upcoming})
-    }
+    setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs})
+    // setUpComing: (upcoming) => {
+    //   dispatch({type:"SET_UPCOMING_CALLS", upcoming})
+    //   dispatch({type:"SET_UPCOMING_EVENTS", upcoming})
+    // }
   }
 }
 const mapStateToProps = (state) => {

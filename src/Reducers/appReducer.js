@@ -78,22 +78,56 @@ function appReducer( state = initialState , action){
         ...state,
         contacts: rcontactCopy
       }
-    case 'SET_UPCOMING_CALLS':
-      const upComingCalls = action.upcoming.filter((upcoming)=>{
-        return upcoming.log_type === true
+    // case 'SET_UPCOMING_CALLS':
+    //   const upComingCalls = action.upcoming.filter((upcoming)=>{
+    //     return upcoming.log_type === true
+    //   })
+    //   return {
+    //     ...state,
+    //     upComingCalls: upComingCalls
+    //   }
+    // case 'SET_UPCOMING_EVENTS':
+    //   const upComingEvents = action.upcoming.filter((upcoming)=>{
+    //     return upcoming.log_type === false
+    //   })
+    //   return {
+    //     ...state,
+    //     upComingEvents: upComingEvents
+    //   }
+    case 'CHANGE_STATUS':
+
+      const newLogs = state.logs.filter((call)=>{
+        return call.id !== action.log.id
       })
+      newLogs.push(action.log)
       return {
-        ...state,
-        upComingCalls: upComingCalls
+      ...state,
+      logs: newLogs
       }
-    case 'SET_UPCOMING_EVENTS':
-      const upComingEvents = action.upcoming.filter((upcoming)=>{
-        return upcoming.log_type === false
-      })
-      return {
-        ...state,
-        upComingEvents: upComingEvents
-      }
+    // case 'CHANGE_CALL':
+    //
+    //   const upComingCallsCopy = state.upComingCalls.filter((call)=>{
+    //     return call.id !== action.log.id
+    //   })
+    //   upComingCallsCopy.push(action.log)
+    //   console.log('after',action.log)
+    //
+    //   return {
+    //     ...state,
+    //     upComingCalls: upComingCallsCopy
+    //   }
+    // case 'CHANGE_MEET':
+    //
+    //   const upComingEventsCopy = state.upComingEvents.filter((call)=>{
+    //     return call.id !== action.log.id
+    //   })
+    //   upComingEventsCopy.push(action.log)
+    //   console.log('after',action.log)
+    //
+    //   return {
+    //     ...state,
+    //     upComingEvents: upComingEventsCopy
+    //   }
     default:
       return state
   }
