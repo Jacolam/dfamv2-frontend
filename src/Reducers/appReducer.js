@@ -2,8 +2,8 @@ const initialState = {
   loggedIn: false,
   contacts: [],
   people: [],
-  upComingCalls: [],
-  upComingEvents: [],
+  // upComingCalls: [],
+  // upComingEvents: [],
   events: [],
   allContacts: true,
   detailedContact:{},
@@ -96,10 +96,9 @@ function appReducer( state = initialState , action){
     //   }
     case 'CHANGE_STATUS':
 
-      const newLogs = state.logs.filter((call)=>{
-        return call.id !== action.log.id
-      })
-      newLogs.push(action.log)
+      const newLogs = [...state.logs]
+      let index = newLogs.findIndex((log) => log.id === action.log.id)
+      newLogs.splice(index,1,action.log)
       return {
       ...state,
       logs: newLogs
