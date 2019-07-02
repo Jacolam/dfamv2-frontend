@@ -32,7 +32,6 @@ class HomeContainer extends React.Component{
             return 1
           }
         })
-        // debugger
         this.props.setUpComing(sortedUpComing)
 
     })

@@ -108,14 +108,14 @@ class IndivContact extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {state}
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = dispatch =>{
   return{
-    showContact: () => dispatch({ type: 'SHOW_CONTACT'}),
-    addLog: (log) => dispatch({ type: 'ADD_LOG', log})
+    showContact: () => dispatch({type: 'SHOW_CONTACT'}),
+    addLog: (log) => dispatch({type: 'ADD_LOG', log})
   }
 }
 

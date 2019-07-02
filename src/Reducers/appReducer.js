@@ -94,6 +94,30 @@ function appReducer( state = initialState , action){
         ...state,
         upComingEvents: upComingEvents
       }
+    case 'CHANGE_CALL':
+
+      const upComingCallsCopy = state.upComingCalls.filter((call)=>{
+        return call.id !== action.log.id
+      })
+      upComingCallsCopy.push(action.log)
+      console.log('after',action.log)
+
+      return {
+        ...state,
+        upComingCalls: upComingCallsCopy
+      }
+    case 'CHANGE_MEET':
+
+      const upComingEventsCopy = state.upComingEvents.filter((call)=>{
+        return call.id !== action.log.id
+      })
+      upComingEventsCopy.push(action.log)
+      console.log('after',action.log)
+
+      return {
+        ...state,
+        upComingEvents: upComingEventsCopy
+      }
     default:
       return state
   }

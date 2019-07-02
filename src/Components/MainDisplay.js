@@ -20,32 +20,16 @@ class MainDisplay extends React.Component{
 
   renderCalls = () => {
     return this.props.state.upComingCalls.map ((call)=>{
-      return <LogCard attributes={call} />
+      return <LogCard attributes={call} page={'main'} />
     })
   }
   renderEvents = () => {
     return this.props.state.upComingEvents.map ((call)=>{
-      return <LogCard attributes={call} />
+      return <LogCard attributes={call} page={'main'} />
     })
   }
 
-  // renderTodayLogs = () => {
-  //   console.log(this.props.state)
-  //   const todayLogs = this.props.state.logs.filter( log => {
-  //     const date = moment(log.datetime).format('MMM DD YYYY')
-  //     const timeFromNow = moment(log.datetime).fromNow()
-  //     return typeof parseInt(timeFromNow.split(" ")[0]) === 'number'
-  //   })
-  //   console.log(todayLogs)
-  //   <Segment>
-  //     <h4>Happening today</h4>
-  //     {this.renderTodayLogs()}
-  //   </Segment>
-  //
-  // }
-
   render(){
-    // console.log(this.props.state)
 
     return(
       <Segment>
