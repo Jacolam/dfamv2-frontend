@@ -19,12 +19,18 @@ class MainDisplay extends React.Component{
   }
 
   renderCalls = () => {
-    return this.props.state.upComingCalls.map ((call)=>{
+    const upComingCalls = this.props.state.logs.filter ((call)=>{
+      return call.log_type === true
+    })
+    return upComingCalls.map ((call)=>{
       return <LogCard attributes={call} page={'main'} />
     })
   }
   renderEvents = () => {
-    return this.props.state.upComingEvents.map ((call)=>{
+    const upComingEvents = this.props.state.logs.filter ((call)=>{
+      return call.log_type === false
+    })
+    return upComingEvents.map ((call)=>{
       return <LogCard attributes={call} page={'main'} />
     })
   }

@@ -4,11 +4,6 @@ import { Segment } from 'semantic-ui-react'
 import { Button, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-// If call style one way , else if meetup style another way
-
-// STYLE THE COMPLETE TO BE A GREEN BUTTON
-// INCOMPLETE SHOULD BE GRAY
-
 class LogCard extends React.Component {
 
 
@@ -33,13 +28,7 @@ class LogCard extends React.Component {
       }
     }).then( res => res.json())
     .then(data => {
-      const logType = this.props.attributes.log_type
-      if (logType){
-        this.props.changeCallStatus(data)
-      }else{
-        this.props.changeMeetStatus(data)
-      }
-
+        this.props.changeStatus(data)
     })
 
   }
@@ -97,8 +86,9 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    changeCallStatus: (log) => dispatch({type:"CHANGE_CALL", log}),
-    changeMeetStatus: (log) => dispatch({type:"CHANGE_MEET", log})
+    changeStatus: (log) => dispatch({type:"CHANGE_STATUS", log})
+    // changeCallStatus: (log) => dispatch({type:"CHANGE_CALL", log}),
+    // changeMeetStatus: (log) => dispatch({type:"CHANGE_MEET", log})
   }
 }
 
