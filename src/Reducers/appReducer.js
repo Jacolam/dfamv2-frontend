@@ -73,6 +73,15 @@ function appReducer( state = initialState , action){
         ...state,
         contacts: rcontactCopy
       }
+    case 'REMOVE_LOGS_CONTACT':
+      const rLogCopy = state.logs.filter( (log)=>{
+        return log.attendee_id !== action.contact.id
+      })
+      console.log('ive removed them ')
+      return {
+        ...state,
+        logs: rLogCopy
+      }
     case 'CHANGE_STATUS':
       const newLogs = [...state.logs]
       let index = newLogs.findIndex((log) => log.id === action.log.id)

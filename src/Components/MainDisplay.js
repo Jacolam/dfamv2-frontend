@@ -30,6 +30,7 @@ class MainDisplay extends React.Component{
     const upComingEvents = this.props.state.logs.filter ((call)=>{
       return call.log_type === false
     })
+    
     return upComingEvents.map ((call)=>{
       return <LogCard attributes={call} page={'main'} />
     })

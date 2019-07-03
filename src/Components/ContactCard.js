@@ -27,7 +27,6 @@ class ContactCard extends React.Component{
           body: JSON.stringify(this.props)
         }).then(res => res.json())
           .then(data => {
-          // debugger
           this.props.removeContact(this.props)
           })
 
@@ -73,7 +72,10 @@ const mapDispatchToProps = dispatch =>{
   return{
     showContact: () => dispatch({ type: 'SHOW_CONTACT'}),
     detailedContact: (contact) => dispatch({ type: 'DETAILED_CONTACT',contact}),
-    removeContact: (contact) => dispatch({ type: 'REMOVE_CONTACT',contact}),
+    removeContact: (contact) => {
+      dispatch({ type: 'REMOVE_CONTACT',contact})
+      dispatch({ type: 'REMOVE_LOGS_CONTACT', contact})
+    }
   }
 }
 export default connect(null,mapDispatchToProps)(ContactCard)

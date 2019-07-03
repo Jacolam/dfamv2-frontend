@@ -8,14 +8,14 @@ class LogCard extends React.Component {
 
 
   // BUGGING IF A USER IS REMOVED
-  // avatarDisplay = () => {
-  //   const contactInfo = this.props.state.contacts.find( (contact)=>{
-  //     return contact.contactee.id ===this.props.attributes.attendee_id
-  //   })
-  //   if (this.props.page){
-  //     return   <Image size='small' src={contactInfo.contactee.avatar} />
-  //   }
-  // }
+  avatarDisplay = () => {
+    const contactInfo = this.props.state.contacts.find( (contact)=>{
+      return contact.contactee.id ===this.props.attributes.attendee_id
+    })
+    if (this.props.page){
+      return   <Image size='small' src={contactInfo.contactee.avatar} />
+    }
+  }
 
   handleComplete = () => {
     console.log(this.props.attributes)
@@ -36,6 +36,7 @@ class LogCard extends React.Component {
   handleEdit = () => {
     console.log('we have been clicked')
   }
+
   handleDelete = () => {
     fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
       method: 'DELETE',
@@ -45,8 +46,6 @@ class LogCard extends React.Component {
         "Authorization": localStorage.getItem("token")
       }
     }).then(res => {
-      console.log(this.props.attributes.id)
-      
       this.props.deleteLog(this.props.attributes.id)
     })
   }
