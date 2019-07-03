@@ -17,26 +17,10 @@ class HomeContainer extends React.Component{
       .then(data => {
         this.props.setContacts(data.contacts)
         this.props.setLogs(data.logs,data.inverse_logs)
-
-        const upComing = this.props.state.logs.filter( (log)=>{
-          const logToArr = moment(log.datetime).fromNow().split(" ")
-          return logToArr[0] === 'in'
-        })
-
-        const sortedUpComing = upComing.sort((a,b) => {
-          if(a.datetime < b.datetime){
-            return -1
-          } else {
-            return 1
-          }
-        })
-        // this.props.setUpComing(sortedUpComing)
-
     })
   }
 
   render(){
-    // console.log(this.props)
     return(
       <div>
         Home Page
@@ -51,10 +35,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts}),
     setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs})
-    // setUpComing: (upcoming) => {
-    //   dispatch({type:"SET_UPCOMING_CALLS", upcoming})
-    //   dispatch({type:"SET_UPCOMING_EVENTS", upcoming})
-    // }
   }
 }
 const mapStateToProps = (state) => {
