@@ -7,12 +7,13 @@ import { connect } from 'react-redux'
 class LogCard extends React.Component {
 
 
-
+  // BUGGING IF A USER IS REMOVED
   avatarDisplay = () => {
     const contactInfo = this.props.state.contacts.find( (contact)=>{
       return contact.contactee.id ===this.props.attributes.attendee_id
     })
-    if (this.props.page){
+    // debugger
+    if (this.props.page ){
       return   <Image size='small' src={contactInfo.contactee.avatar} />
     }
   }
@@ -36,8 +37,18 @@ class LogCard extends React.Component {
   handleEdit = () => {
     console.log('we have been clicked')
   }
+
   handleDelete = () => {
-    console.log('we have been clicked')
+    fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accepts: 'application/json',
+        "Authorization": localStorage.getItem("token")
+      }
+    }).then(res => {
+      this.props.deleteLog(this.props.attributes.id)
+    })
   }
 
   render(){
@@ -50,7 +61,7 @@ class LogCard extends React.Component {
           {`${date},`}<br/>
           {this.props.attributes.log_type ? `Call` : `Meet up`}
           {` @ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
-          {this.avatarDisplay()}
+        {this.avatarDisplay()}
           {this.props.attributes.completed ? (
             <Button color='green' inverse onClick={this.handleComplete}>
               Completed
@@ -86,9 +97,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    changeStatus: (log) => dispatch({type:"CHANGE_STATUS", log})
-    // changeCallStatus: (log) => dispatch({type:"CHANGE_CALL", log}),
-    // changeMeetStatus: (log) => dispatch({type:"CHANGE_MEET", log})
+    changeStatus: (log) => dispatch({type: "CHANGE_STATUS", log}),
+    deleteLog: (log) => dispatch({type: "DELETE_LOG", log})
   }
 }
 

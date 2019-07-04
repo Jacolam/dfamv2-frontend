@@ -2,8 +2,6 @@ const initialState = {
   loggedIn: false,
   contacts: [],
   people: [],
-  upComingCalls: [],
-  upComingEvents: [],
   events: [],
   allContacts: true,
   detailedContact:{},
@@ -23,13 +21,11 @@ function appReducer( state = initialState , action){
         contacts: action.contacts
       }
     case 'SET_EVENTS':
-      // const eventsCopy = action.events
       return {
         ...state,
         events: action.events
       }
     case 'SET_LOGS':
-    // need to combine all the logs that i created, and all the logs that people have created for me
       const logsCopy = action.logs.concat(action.inverse_logs)
       return {
         ...state,
@@ -71,63 +67,37 @@ function appReducer( state = initialState , action){
       }
     case 'REMOVE_CONTACT':
       const rcontactCopy = state.contacts.filter((contact)=>{
-        // debugger
         return contact.contactee.id !== action.contact.id
       })
       return {
         ...state,
         contacts: rcontactCopy
       }
-    // case 'SET_UPCOMING_CALLS':
-    //   const upComingCalls = action.upcoming.filter((upcoming)=>{
-    //     return upcoming.log_type === true
-    //   })
-    //   return {
-    //     ...state,
-    //     upComingCalls: upComingCalls
-    //   }
-    // case 'SET_UPCOMING_EVENTS':
-    //   const upComingEvents = action.upcoming.filter((upcoming)=>{
-    //     return upcoming.log_type === false
-    //   })
-    //   return {
-    //     ...state,
-    //     upComingEvents: upComingEvents
-    //   }
-    case 'CHANGE_STATUS':
-
-      const newLogs = state.logs.filter((call)=>{
-        return call.id !== action.log.id
+    case 'REMOVE_LOGS_CONTACT':
+      const rLogCopy = state.logs.filter( (log)=>{
+        return log.attendee_id !== action.contact.id
       })
-      newLogs.push(action.log)
+      console.log('ive removed them ')
+      return {
+        ...state,
+        logs: rLogCopy
+      }
+    case 'CHANGE_STATUS':
+      const newLogs = [...state.logs]
+      let index = newLogs.findIndex((log) => log.id === action.log.id)
+      newLogs.splice(index,1,action.log)
       return {
       ...state,
       logs: newLogs
       }
-    // case 'CHANGE_CALL':
-    //
-    //   const upComingCallsCopy = state.upComingCalls.filter((call)=>{
-    //     return call.id !== action.log.id
-    //   })
-    //   upComingCallsCopy.push(action.log)
-    //   console.log('after',action.log)
-    //
-    //   return {
-    //     ...state,
-    //     upComingCalls: upComingCallsCopy
-    //   }
-    // case 'CHANGE_MEET':
-    //
-    //   const upComingEventsCopy = state.upComingEvents.filter((call)=>{
-    //     return call.id !== action.log.id
-    //   })
-    //   upComingEventsCopy.push(action.log)
-    //   console.log('after',action.log)
-    //
-    //   return {
-    //     ...state,
-    //     upComingEvents: upComingEventsCopy
-    //   }
+    case 'DELETE_LOG':
+      const delLog = state.logs.filter((log)=>{
+        return log.id !== action.log
+      })
+      return {
+      ...state,
+      logs: delLog
+      }
     default:
       return state
   }
