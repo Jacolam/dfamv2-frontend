@@ -5,9 +5,9 @@
 <!-- needs to send fetch request from every page if token is present
 temp fix -->
 
-**functionality
+** functionality
   signup page
-    -ADD ERROR MESSAGE IF FAILS TO CREATE
+    <!-- -ADD ERROR MESSAGE IF FAILS TO CREATE -->
     -auto sign in after signing up
     -not currently receiving token at the end of the request
 

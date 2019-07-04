@@ -12,7 +12,8 @@ class LogCard extends React.Component {
     const contactInfo = this.props.state.contacts.find( (contact)=>{
       return contact.contactee.id ===this.props.attributes.attendee_id
     })
-    if (this.props.page){
+    // debugger
+    if (this.props.page ){
       return   <Image size='small' src={contactInfo.contactee.avatar} />
     }
   }
@@ -60,7 +61,7 @@ class LogCard extends React.Component {
           {`${date},`}<br/>
           {this.props.attributes.log_type ? `Call` : `Meet up`}
           {` @ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
-        {/*this.avatarDisplay()*/}
+        {this.avatarDisplay()}
           {this.props.attributes.completed ? (
             <Button color='green' inverse onClick={this.handleComplete}>
               Completed
