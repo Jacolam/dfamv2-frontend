@@ -5,7 +5,8 @@ const initialState = {
   events: [],
   allContacts: true,
   detailedContact:{},
-  logs: []
+  logs: [],
+  settings:{}
 }
 
 function appReducer( state = initialState , action){
@@ -30,6 +31,19 @@ function appReducer( state = initialState , action){
       return {
         ...state,
         logs: logsCopy
+      }
+    case 'SET_SETTINGS':
+      const settings = {
+        username: action.data.username,
+        phone: action.data.phone,
+        email: action.data.email,
+        avatar: action.data.avatar,
+        twitter: action.data.twitter,
+        facebook: action.data.facebook
+      }
+      return {
+        ...state,
+        settings: settings
       }
     case 'SET_UNADDED':
       return {
