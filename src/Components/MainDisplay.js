@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import LogCard from './LogCard.js'
-import moment from 'moment'
+// import moment from 'moment'
 
 
 class MainDisplay extends React.Component{
@@ -30,7 +30,7 @@ class MainDisplay extends React.Component{
     const upComingEvents = this.props.state.logs.filter ((call)=>{
       return call.log_type === false
     })
-    
+
     return upComingEvents.map ((call)=>{
       return <LogCard attributes={call} page={'main'} />
     })
@@ -40,15 +40,20 @@ class MainDisplay extends React.Component{
 
     return(
       <Segment>
-      Dashboard
-        <Segment>
-          <h4>Upcoming Calls</h4>
+        <div class='container'>
+          <div class='container'>
+            <Segment>
+              <h4>Upcoming Calls</h4>
               {this.renderCalls()}
-        </Segment>
-        <Segment>
-          <h4>Upcoming Events</h4>
-            {this.renderEvents()}
-        </Segment>
+            </Segment>
+          </div>
+          <div class='container'>
+            <Segment>
+              <h4>Upcoming Events</h4>
+              {this.renderEvents()}
+            </Segment>
+          </div>
+        </div>
       </Segment>
     )
   }

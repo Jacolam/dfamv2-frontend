@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Image , Icon } from 'semantic-ui-react'
+import { Button, Card, Image } from 'semantic-ui-react'
 // import { Link } from 'react-router-dom'
 
 
@@ -23,16 +23,16 @@ class AddContactCard extends React.Component{
       .then(data => {
         this.props.addUser(data)
       })
-      
+
   }
 
   render(){
     return(
       <Card>
         <Image src={this.props.avatar} />
-        <Card.Header id={this.props.username}>
+        <Card.Header id={this.props.username} textAlign='center'>
           {this.capitalize(this.props.username)}<br/>
-          <button onClick={ (e) => this.handleClick(e,this.props)}>Add Contact</button>
+          <Button onClick={ (e) => this.handleClick(e,this.props)}>Add Contact</Button>
         </Card.Header>
       </Card>
     )

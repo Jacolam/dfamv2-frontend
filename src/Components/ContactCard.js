@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Image , Icon } from 'semantic-ui-react'
+import { Button, Card, Image, Icon } from 'semantic-ui-react'
 // import { Link } from 'react-router-dom'
 
 
 class ContactCard extends React.Component{
 
   handleClick = (e,props) =>{
-    // console.log(e.target.innerHTML)
     const target = e.target.innerHTML
     switch(target){
       case "Twitter":
@@ -32,9 +31,6 @@ class ContactCard extends React.Component{
 
       break;
       default:
-      //defaults needs to set state for contact to this props
-      //render the contact component with this information
-      // hiding the render contacts
       this.props.showContact()
       this.props.detailedContact(props)
     }
@@ -59,9 +55,9 @@ class ContactCard extends React.Component{
           <Icon color='brown' name='coffee' />
         </Card.Meta>
         <Card.Description textAlign='center'>
-          <button onClick={this.handleClick}>Twitter</button>
-          <button onClick={this.handleClick}>Facebook</button>
-          <button onClick={this.handleClick}>Remove</button>
+          <Button onClick={this.handleClick}>Twitter</Button>
+          {/*<Button onClick={this.handleClick}>Facebook</Button>*/}
+          <Button onClick={this.handleClick}>Remove</Button>
         </Card.Description>
       </Card>
     )

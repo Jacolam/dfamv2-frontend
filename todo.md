@@ -50,3 +50,6 @@ temp fix -->
   implement calendar function
   get all buttons working
   filter function for contacts and people
+
+  weird bug sometimes adding new log when a time is closer than cycle,
+   can not fully replicate issue

@@ -6,13 +6,24 @@ import { connect } from 'react-redux'
 
 class LogCard extends React.Component {
 
+  state = {
+    time:'',
+    date:'',
+    log_type:false,
+    id: '',
+    edit: false
+  }
 
-  // BUGGING IF A USER IS REMOVED
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    }, () => console.log(this.state))
+  }
+
   avatarDisplay = () => {
     const contactInfo = this.props.state.contacts.find( (contact)=>{
       return contact.contactee.id ===this.props.attributes.attendee_id
     })
-    // debugger
     if (this.props.page ){
       return   <Image size='small' src={contactInfo.contactee.avatar} />
     }
@@ -35,7 +46,13 @@ class LogCard extends React.Component {
   }
 
   handleEdit = () => {
-    console.log('we have been clicked')
+    this.setState({
+      time: moment(this.props.attributes.datetime).format('H:mm A'),
+      date: moment(this.props.attributes.datetime).format('MMM DD YYYY'),
+      log_type: this.props.attributes.log_type,
+      id: this.props.attributes.id,
+      edit: !this.state.edit
+    })
   }
 
   handleDelete = () => {
@@ -51,43 +68,79 @@ class LogCard extends React.Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:3000/api/v1/logs', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": localStorage.getItem("token")
+        },
+        body: JSON.stringify(this.state)
+      }
+    ).then(res => res.json())
+    .then( data => {
+      console.log(data)
+      // need to update state with no log
+    })
+
+  }
+
   render(){
     const date = moment(this.props.attributes.datetime).format('MMM DD YYYY')
-    const time = moment(this.props.attributes.datetime).format('H:mm A')
+    const time = moment(this.props.attributes.datetime).format('h:mm A')
 
     return(
-      <div>
-        <Segment color={ time === '0:00 AM' ? 'red' : "green"}>
-          {`${date},`}<br/>
-          {this.props.attributes.log_type ? `Call` : `Meet up`}
-          {` @ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
-        {this.avatarDisplay()}
-          {this.props.attributes.completed ? (
-            <Button color='green' inverse onClick={this.handleComplete}>
-              Completed
-            </Button>
-          ):(
-            <Button animated onClick={this.handleComplete}>
-              <Button.Content visible>Complete</Button.Content>
-              <Button.Content hidden >
-                <Icon name='check' color='green'></Icon>
-              </Button.Content>
-            </Button>
-          )}
-          <Button animated onClick={this.handleEdit}>
-            <Button.Content visible >Edit</Button.Content>
-            <Button.Content hidden>
-              <Icon name='edit' color='black'></Icon>
-            </Button.Content>
-          </Button>
-          <Button animated onClick={this.handleDelete}>
-             <Button.Content visible>Delete</Button.Content>
-             <Button.Content hidden>
-               <Icon name='remove' color='red' inverse></Icon>
-             </Button.Content>
-          </Button>
+        <Segment color={ time === '12:00 AM' ? 'red' : "green"} >
+          <div class='container'>
+            <div>
+              {`${date},`}<br/>
+              {this.props.attributes.log_type ? `Call` : `Meet up`}
+              {` @ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
+              {this.props.attributes.completed ? (
+                <Button color='green' inverse onClick={this.handleComplete}>
+                  Completed
+                </Button>
+              ):(
+                <Button animated onClick={this.handleComplete}>
+                  <Button.Content visible>Complete</Button.Content>
+                  <Button.Content hidden >
+                    <Icon name='check' color='green'></Icon>
+                  </Button.Content>
+                </Button>
+              )}
+              <Button animated onClick={this.handleEdit}>
+                <Button.Content visible >Edit</Button.Content>
+                <Button.Content hidden>
+                  <Icon name='edit' color='black'></Icon>
+                </Button.Content>
+              </Button>
+              <Button animated onClick={this.handleDelete}>
+                 <Button.Content visible>Delete</Button.Content>
+                 <Button.Content hidden>
+                   <Icon name='remove' color='red' inverse></Icon>
+                 </Button.Content>
+              </Button>
+            </div>
+            <div>
+              {this.state.edit ? (
+                <form onSubmit={this.handleSubmit}>
+                  {/* unable to prepopulate with old information, state is saved */}
+                  <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
+                  <input type='date' onChange={this.handleChange} name="date"></input>
+                  <select name='log_type' onChange={this.handleChange}>
+                    <option value={false}>Meet Up</option>
+                    <option value={true}>Call</option>
+                  </select>
+                  <Button type='submit'>Edit Event </Button>
+                </form>
+              ):('')}
+            </div>
+            <div>
+              {this.avatarDisplay()}
+            </div>
+          </div>
         </Segment>
-      </div>
     )
   }
 }
