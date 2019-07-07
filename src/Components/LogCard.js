@@ -132,7 +132,7 @@ class LogCard extends React.Component {
                     <option value={false}>Meet Up</option>
                     <option value={true}>Call</option>
                   </select>
-                  <Button type='submit'>Edit Event </Button>
+                  <Button type='submit'> Save Changes </Button>
                 </form>
               ):('')}
             </div>

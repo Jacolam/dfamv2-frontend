@@ -2,3 +2,12 @@
   display: flex;
   margin: 0px ;
 }
+
+.names {
+  width: 100px;
+}
+
+.profile-picture {
+  max-width: 200px;
+  max-height: 200px;
+}

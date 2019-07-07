@@ -112,6 +112,12 @@ function appReducer( state = initialState , action){
       ...state,
       logs: delLog
       }
+    case 'CHANGE_IMAGE':
+      const newSettings = {...state.settings, avatar: action.image}
+      return {
+      ...state,
+      settings: newSettings
+      }
     default:
       return state
   }
