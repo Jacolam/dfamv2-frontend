@@ -27,7 +27,8 @@ function appReducer( state = initialState , action){
         events: action.events
       }
     case 'SET_LOGS':
-      const logsCopy = action.logs.concat(action.inverse_logs)
+      const logsCopy = action.logs
+      // .concat(action.inverse_logs)
       return {
         ...state,
         logs: logsCopy

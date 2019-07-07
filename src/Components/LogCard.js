@@ -24,7 +24,8 @@ class LogCard extends React.Component {
     const contactInfo = this.props.state.contacts.find( (contact)=>{
       return contact.contactee.id ===this.props.attributes.attendee_id
     })
-    if (this.props.page ){
+    // do users need to see their inverse calls?
+    if (this.props.page  && contactInfo){
       return   <Image size='small' src={contactInfo.contactee.avatar} />
     }
   }

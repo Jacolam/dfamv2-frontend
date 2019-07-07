@@ -19,6 +19,7 @@ class HomeContainer extends React.Component{
         this.props.setSettings(data)
         this.props.setContacts(data.contacts)
         this.props.setLogs(data.logs,data.inverse_logs)
+        //do users need to see their inverse logs?
     })
   }
 
