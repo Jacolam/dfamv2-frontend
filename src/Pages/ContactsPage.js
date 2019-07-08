@@ -29,6 +29,8 @@ class ContactsPage extends React.Component{
         key={contact.contactee.username}
         id={contact.contactee.id}
         username={contact.contactee.username}
+        phone={contact.contactee.phone}
+        email={contact.contactee.email}
         meetCycle={contact.meet_cycle}
         callCycle={contact.call_cycle}
         avatar={contact.contactee.avatar}

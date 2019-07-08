@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import hasToken from '../hasToken.js'
 import moment from 'moment'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Icon, Button } from 'semantic-ui-react'
 import LogCard from './LogCard.js'
 
 
@@ -12,13 +12,18 @@ class IndivContact extends React.Component{
     time:'',
     date:'',
     log_type:false,
-    attendee_id: ''
+    attendee_id: '',
+    call_cycle: '',
+    meet_cycle: '',
+    edit: false
   }
 
   componentDidMount(){
     hasToken()
     this.setState({
-      attendee_id: this.props.state.detailedContact.id
+      attendee_id: this.props.state.detailedContact.id,
+      call_cycle: this.props.state.detailedContact.callCycle,
+      meet_cycle: this.props.state.detailedContact.meetCycle,
     })
 
   }
@@ -48,9 +53,6 @@ class IndivContact extends React.Component{
       }
     ).then(res => res.json())
     .then(data => {
-      console.log('using moment',moment(data.datetime)._d)
-      console.log(data)
-      console.log(this.props.state)
       this.props.addLog(data)
     })
 
@@ -75,13 +77,59 @@ class IndivContact extends React.Component{
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  render(){
+  editCycle = () => {
+    if (this.state.edit){
+      console.log('submit')
+      fetch('http://localhost:3000/api/v1/contacts/update', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("token")
+          },
+          body: JSON.stringify(this.state)
+        }
+      )
+      this.props.updateCycle(this.state)
+    }
 
+    this.setState({
+      edit: !this.state.edit
+    })
+
+  }
+
+  render(){
+    console.log(this.props.state.detailedContact)
     return(
       <div>
         <Segment>
           {this.capitalize(this.props.state.detailedContact.username)}<br/>
-          call every {this.props.state.detailedContact.callCycle}
+          <Segment>
+            <Icon color='black' name='phone' />
+             every {this.props.state.detailedContact.callCycle}
+             {this.state.edit ? (
+               <input
+                 name='call_cycle'
+                 onChange={this.handleChange}
+                 value={this.state.call_cycle}>
+              </input>
+             ):(" ")}
+             <br/>
+            <Icon color='brown' name='coffee' />
+             every {this.props.state.detailedContact.meetCycle}
+             {this.state.edit ? (
+               <input
+                 name='meet_cycle'
+                 onChange={this.handleChange}
+                 value={this.state.meet_cycle}>
+               </input>
+             ):(" ")}
+            <br/>
+
+            Phone: {this.props.state.detailedContact.phone}<br/>
+            Email: {this.props.state.detailedContact.email}<br/>
+          <Button onClick={this.editCycle}>{this.state.edit? 'Submit' : 'Edit Cycles'}</Button>
+          </Segment>
 
           <form onSubmit={this.handleSubmit}>
             <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
@@ -90,10 +138,10 @@ class IndivContact extends React.Component{
               <option value={false}>Meet Up</option>
               <option value={true}>Call</option>
             </select>
-            <button type='submit'>Create event </button>
+            <Button type='submit'>Create event </Button>
           </form>
 
-          <button onClick={this.handleClick}>Go Back</button><br/>
+          <Button onClick={this.handleClick}>Go Back</Button><br/>
 
         </Segment>
 
@@ -113,7 +161,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
   return{
     showContact: () => dispatch({type: 'SHOW_CONTACT'}),
-    addLog: (log) => dispatch({type: 'ADD_LOG', log})
+    addLog: (log) => dispatch({type: 'ADD_LOG', log}),
+    updateCycle: (cycle) => {
+      dispatch({type: 'UPDATE_CALL_CYCLE', cycle })
+      dispatch({type: 'UPDATE_MEET_CYCLE', cycle })
+    }
   }
 }
 

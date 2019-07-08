@@ -47,7 +47,6 @@ function appReducer( state = initialState , action){
         settings: settings
       }
     case 'UPDATE_INFO':
-    debugger
       const newInfo = {
         username: action.settings.username,
         phone: action.settings.phone,
@@ -125,6 +124,32 @@ function appReducer( state = initialState , action){
       return {
       ...state,
       logs: delLog
+      }
+    case 'UPDATE_LOG':
+
+      const logs = state.logs.filter((log)=>{
+        return action.log.id !== log.id
+      })
+
+      const updatedLogs = [...logs, action.log ]
+
+      return {
+      ...state,
+      logs: updatedLogs
+      }
+    case 'UPDATE_CALL_CYCLE':
+      console.log('updated')
+      const updateCallCycle = { ...state.detailedContact, callCycle: action.cycle.call_cycle}
+      return {
+      ...state,
+      detailedContact: updateCallCycle
+      }
+    case 'UPDATE_MEET_CYCLE':
+      console.log('updated')
+      const updateMeetCycle = { ...state.detailedContact, meetCycle: action.cycle.meet_cycle}
+      return {
+      ...state,
+      detailedContact: updateMeetCycle
       }
     case 'CHANGE_IMAGE':
       const newSettings = {...state.settings, avatar: action.image}

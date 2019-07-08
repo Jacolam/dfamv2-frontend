@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import hasToken from '../hasToken.js'
 import EventCard from '../Components/EventCard'
+import { Segment } from 'semantic-ui-react'
 
 
 
@@ -41,7 +42,9 @@ class EventsPage extends React.Component{
       <div>
       Local Events Page
       <NavBar/>
-      {this.renderEvents()}
+        <Segment>
+          {this.renderEvents()}
+        </Segment>
       </div>
     )
   }
