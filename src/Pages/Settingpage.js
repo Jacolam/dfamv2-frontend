@@ -10,6 +10,22 @@ class SettingPage extends React.Component{
     hasToken()
   }
 
+  state = {
+    edit: false,
+    username: "",
+    phone: "",
+    email: "",
+    twitter: "",
+    facebook: "",
+    avatar: ""
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    }, () => console.log(this.state))
+  }
+
   openWidget = () => {
     window.cloudinary.createUploadWidget(
       {
@@ -35,6 +51,49 @@ class SettingPage extends React.Component{
 
   editForm = () => {
     console.log('you wanan edit me!?!?!')
+
+    this.setState({
+      edit: true
+    })
+
+    fetch(`http://localhost:3000/api/v1/profile/edit`,{
+      headers: {
+        'Content-Type': 'application/json',
+        Accepts: 'application/json',
+        "Authorization": localStorage.getItem("token")
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        username: data.user.username,
+        phone: data.user.phone,
+        email: data.user.email,
+        twitter: data.user.twitter,
+        facebook: data.user.facebook,
+        avatar: data.user.avatar
+      })
+      // should use redux state, here
+    })
+
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/api/v1/user/update`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accepts: 'application/json',
+        "Authorization": localStorage.getItem("token")
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then( this.props.updateInfo(this.state) )
+
+    this.setState({
+      edit: false
+    })
   }
 
   render(){
@@ -51,13 +110,27 @@ class SettingPage extends React.Component{
               Twitter:<br/>
               Facebook:<br/>
             </div>
-            <div>
-              {this.props.state.settings.username}<br/>
-              {this.props.state.settings.phone}<br/>
-              {this.props.state.settings.email}<br/>
-              {this.props.state.settings.twitter}<br/>
-              {this.props.state.settings.facebook}<br/>
-            </div>
+              { this.state.edit ? (
+                <div>
+                  <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                    <input type='text' name='username' value={this.state.username} ></input><br/>
+                    <input type='text' name='phone' value={this.state.phone} ></input><br/>
+                    <input type='text' name='email' value={this.state.email} ></input><br/>
+                    <input type='text' name='twitter' value={this.state.twitter} ></input><br/>
+                    <input type='text' name='facebook' value={this.state.facebook} ></input><br/>
+                    <button type="submit">submit</button>
+                  </form>
+                </div>
+              ):(
+                <div>
+                  {this.props.state.settings.username}<br/>
+                  {this.props.state.settings.phone}<br/>
+                  {this.props.state.settings.email}<br/>
+                  {this.props.state.settings.twitter}<br/>
+                  {this.props.state.settings.facebook}<br/>
+                </div>
+                )
+              }
             <div class='container'>
               <img class='profile-picture'src={this.props.state.settings.avatar} />
               <Button onClick={this.openWidget}> Upload Avatar Image</Button>
@@ -72,7 +145,8 @@ class SettingPage extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeAvatar: (image) => dispatch({type:"CHANGE_IMAGE", image})
+    changeAvatar: (image) => dispatch({type:"CHANGE_IMAGE", image}),
+    updateInfo: (settings) => dispatch({type:"UPDATE_INFO", settings})
   }
 }
 const mapStateToProps = (state) => {

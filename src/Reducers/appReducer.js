@@ -46,6 +46,20 @@ function appReducer( state = initialState , action){
         ...state,
         settings: settings
       }
+    case 'UPDATE_INFO':
+    debugger
+      const newInfo = {
+        username: action.settings.username,
+        phone: action.settings.phone,
+        email: action.settings.email,
+        avatar: action.settings.avatar,
+        twitter: action.settings.twitter,
+        facebook: action.settings.facebook
+      }
+      return {
+        ...state,
+        settings: newInfo
+      }
     case 'SET_UNADDED':
       return {
         ...state,
@@ -92,7 +106,6 @@ function appReducer( state = initialState , action){
       const rLogCopy = state.logs.filter( (log)=>{
         return log.attendee_id !== action.contact.id
       })
-      console.log('ive removed them ')
       return {
         ...state,
         logs: rLogCopy
