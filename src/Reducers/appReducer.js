@@ -5,7 +5,8 @@ const initialState = {
   events: [],
   allContacts: true,
   detailedContact:{},
-  logs: []
+  logs: [],
+  settings:{}
 }
 
 function appReducer( state = initialState , action){
@@ -26,10 +27,38 @@ function appReducer( state = initialState , action){
         events: action.events
       }
     case 'SET_LOGS':
-      const logsCopy = action.logs.concat(action.inverse_logs)
+      const logsCopy = action.logs
+      // .concat(action.inverse_logs)
       return {
         ...state,
         logs: logsCopy
+      }
+    case 'SET_SETTINGS':
+      const settings = {
+        username: action.data.username,
+        phone: action.data.phone,
+        email: action.data.email,
+        avatar: action.data.avatar,
+        twitter: action.data.twitter,
+        facebook: action.data.facebook
+      }
+      return {
+        ...state,
+        settings: settings
+      }
+    case 'UPDATE_INFO':
+    debugger
+      const newInfo = {
+        username: action.settings.username,
+        phone: action.settings.phone,
+        email: action.settings.email,
+        avatar: action.settings.avatar,
+        twitter: action.settings.twitter,
+        facebook: action.settings.facebook
+      }
+      return {
+        ...state,
+        settings: newInfo
       }
     case 'SET_UNADDED':
       return {
@@ -77,7 +106,6 @@ function appReducer( state = initialState , action){
       const rLogCopy = state.logs.filter( (log)=>{
         return log.attendee_id !== action.contact.id
       })
-      console.log('ive removed them ')
       return {
         ...state,
         logs: rLogCopy
@@ -97,6 +125,12 @@ function appReducer( state = initialState , action){
       return {
       ...state,
       logs: delLog
+      }
+    case 'CHANGE_IMAGE':
+      const newSettings = {...state.settings, avatar: action.image}
+      return {
+      ...state,
+      settings: newSettings
       }
     default:
       return state

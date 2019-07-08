@@ -24,7 +24,7 @@ class LogCard extends React.Component {
     const contactInfo = this.props.state.contacts.find( (contact)=>{
       return contact.contactee.id ===this.props.attributes.attendee_id
     })
-    if (this.props.page ){
+    if (this.props.page  && contactInfo){
       return   <Image size='small' src={contactInfo.contactee.avatar} />
     }
   }
@@ -132,7 +132,7 @@ class LogCard extends React.Component {
                     <option value={false}>Meet Up</option>
                     <option value={true}>Call</option>
                   </select>
-                  <Button type='submit'>Edit Event </Button>
+                  <Button type='submit'> Save Changes </Button>
                 </form>
               ):('')}
             </div>

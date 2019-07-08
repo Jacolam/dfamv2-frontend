@@ -15,12 +15,16 @@ class HomeContainer extends React.Component{
       }
     }).then(res => res.json())
       .then(data => {
+        console.log(data)
+        this.props.setSettings(data)
         this.props.setContacts(data.contacts)
         this.props.setLogs(data.logs,data.inverse_logs)
+        //do users need to see their inverse logs?
     })
   }
 
   render(){
+    console.log(this.props.state.settings)
     return(
       <div>
         Home Page
@@ -34,7 +38,8 @@ class HomeContainer extends React.Component{
 const mapDispatchToProps = (dispatch) => {
   return {
     setContacts: (contacts) => dispatch({type:'SET_CONTACTS',contacts}),
-    setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs})
+    setLogs: (logs,inverse_logs) => dispatch({type:'SET_LOGS',logs,inverse_logs}),
+    setSettings: (data) => dispatch({type:'SET_SETTINGS', data })
   }
 }
 const mapStateToProps = (state) => {
