@@ -29,11 +29,8 @@ class SearchPage extends React.Component{
   }
 
   render(){
-
-    // console.log(this.props.state.people)
     return(
       <div>
-      Search Page
         <NavBar />
         <Segment>
           <Card.Group itemsPerRow={5}>

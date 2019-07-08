@@ -50,7 +50,6 @@ class SettingPage extends React.Component{
   }
 
   editForm = () => {
-    console.log('you wanan edit me!?!?!')
 
     this.setState({
       edit: true
@@ -99,7 +98,6 @@ class SettingPage extends React.Component{
   render(){
     return(
       <div>
-        Setting Page
         <NavBar/>
         <Segment>
           <div class='container'>

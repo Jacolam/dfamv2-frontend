@@ -95,52 +95,61 @@ class LogCard extends React.Component {
     return(
         <Segment color={ time === '12:00 AM' ? 'red' : "green"} >
           <div class='container'>
-            <div>
-              {`${date},`}<br/>
-              {this.props.attributes.log_type ? `Call` : `Meet up`}
-              {` @ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
-              {this.props.attributes.completed ? (
-                <Button color='green' inverse onClick={this.handleComplete}>
-                  Completed
-                </Button>
-              ):(
-                <Button animated onClick={this.handleComplete}>
-                  <Button.Content visible>Complete</Button.Content>
-                  <Button.Content hidden >
-                    <Icon name='check' color='green'></Icon>
+            <div class='content'>
+
+              <div>
+                {`${date},`}<br/>
+                {this.props.attributes.log_type ? `Call` : `Meet`}
+                {` @ ${time}, ${moment(this.props.attributes.datetime).fromNow()}`}<br/>
+              </div>
+
+              <div>
+                {this.state.edit ? (
+                  <form onSubmit={this.handleSubmit}>
+                    <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
+                    <input type='date' onChange={this.handleChange} name="date"></input><br/><br/>
+                    <select name='log_type' onChange={this.handleChange}>
+                      <option value={false}>Meet Up</option>
+                      <option value={true}>Call</option>
+                    </select>
+                    <Button size='mini' type='submit'> Save Changes </Button>
+                  </form>
+                ):('')}
+              </div>
+
+              <div class='button-container'>
+                {this.props.attributes.completed ? (
+                  <Button color='green' inverse onClick={this.handleComplete}>
+                    Completed
+                  </Button>
+                ):(
+                  <Button animated onClick={this.handleComplete}>
+                    <Button.Content visible>Complete</Button.Content>
+                    <Button.Content hidden >
+                      <Icon name='check' color='green'></Icon>
+                    </Button.Content>
+                  </Button>
+                )}
+                <Button animated onClick={this.handleEdit}>
+                  <Button.Content visible >Edit</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='edit' color='black'></Icon>
                   </Button.Content>
                 </Button>
-              )}
-              <Button animated onClick={this.handleEdit}>
-                <Button.Content visible >Edit</Button.Content>
-                <Button.Content hidden>
-                  <Icon name='edit' color='black'></Icon>
-                </Button.Content>
-              </Button>
-              <Button animated onClick={this.handleDelete}>
-                 <Button.Content visible>Delete</Button.Content>
-                 <Button.Content hidden>
-                   <Icon name='remove' color='red' inverse></Icon>
-                 </Button.Content>
-              </Button>
+                <Button animated onClick={this.handleDelete}>
+                   <Button.Content visible>Delete</Button.Content>
+                   <Button.Content hidden>
+                     <Icon name='remove' color='red' inverse></Icon>
+                   </Button.Content>
+                </Button>
+              </div>
+
             </div>
-            <div>
-              {this.state.edit ? (
-                <form onSubmit={this.handleSubmit}>
-                  {/* unable to prepopulate with old information, state is saved */}
-                  <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-                  <input type='date' onChange={this.handleChange} name="date"></input>
-                  <select name='log_type' onChange={this.handleChange}>
-                    <option value={false}>Meet Up</option>
-                    <option value={true}>Call</option>
-                  </select>
-                  <Button type='submit'> Save Changes </Button>
-                </form>
-              ):('')}
-            </div>
+
             <div>
               {this.avatarDisplay()}
             </div>
+
           </div>
         </Segment>
     )

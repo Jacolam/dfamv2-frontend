@@ -1,6 +1,25 @@
+.main-container {
+  display: flex;
+  margin: 0px ;
+  justify-content: space-evenly ;
+}
+.button-container {
+  display: flex;
+  justify-content: space-evenly ;
+  vertical-align="bottom"
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+
 .container {
   display: flex;
   margin: 0px ;
+  justify-content: space-evenly ;
 }
 
 .names {

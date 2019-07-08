@@ -29,8 +29,6 @@ class SignUpPage extends React.Component{
     .then(data => {
       //will push user to login page after creating
       window.location.replace(`http://localhost:3001/login`)
-      // ADD ERROR MEESAGE IF FAILS TO CREATE
-      // AUTO SIGN IN AFTER SIGNING UP
 
     })
   }

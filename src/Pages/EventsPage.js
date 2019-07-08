@@ -37,10 +37,8 @@ class EventsPage extends React.Component{
   }
 
   render(){
-    // console.log(this.props.state.events)
     return(
       <div>
-      Local Events Page
       <NavBar/>
         <Segment>
           {this.renderEvents()}
