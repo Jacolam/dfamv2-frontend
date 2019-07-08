@@ -8,12 +8,20 @@
   justify-content: space-evenly ;
   vertical-align="bottom"
 }
+.upcoming {
+  width: 90%;
+}
 
 .content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 5px;
+}
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px ;
 }
 
 .container {

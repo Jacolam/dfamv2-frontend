@@ -43,13 +43,13 @@ class MainDisplay extends React.Component{
     return(
       <Segment>
         <div class='main-container'>
-          <div>
+          <div class='upcoming'>
             <Segment>
               <h4>Upcoming Calls</h4>
               {this.renderCalls()}
             </Segment>
           </div>
-          <div>
+          <div class='upcoming'>
             <Segment>
               <h4>Upcoming Events</h4>
               {this.renderEvents()}

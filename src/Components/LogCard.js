@@ -106,13 +106,20 @@ class LogCard extends React.Component {
               <div>
                 {this.state.edit ? (
                   <form onSubmit={this.handleSubmit}>
-                    <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-                    <input type='date' onChange={this.handleChange} name="date"></input><br/><br/>
-                    <select name='log_type' onChange={this.handleChange}>
-                      <option value={false}>Meet Up</option>
-                      <option value={true}>Call</option>
-                    </select>
-                    <Button size='mini' type='submit'> Save Changes </Button>
+
+                    <div>
+                      <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
+                      <input type='date' onChange={this.handleChange} name="date"></input>
+                    </div><br/>
+
+                    <div>
+                      <select name='log_type' onChange={this.handleChange}>
+                        <option value={false}>Meet Up</option>
+                        <option value={true}>Call</option>
+                      </select>
+                      <Button size='mini' type='submit'> Save Changes </Button>
+                    </div>
+
                   </form>
                 ):('')}
               </div>
