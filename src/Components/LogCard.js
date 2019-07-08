@@ -80,8 +80,10 @@ class LogCard extends React.Component {
       }
     ).then(res => res.json())
     .then( data => {
-      console.log(data)
-      // need to update state with no log
+      this.props.updateLog(data)
+      this.setState({
+        edit: false
+      })
     })
 
   }
@@ -151,6 +153,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeStatus: (log) => dispatch({type: "CHANGE_STATUS", log}),
+    updateLog: (log) => dispatch({type: "UPDATE_LOG", log}),
     deleteLog: (log) => dispatch({type: "DELETE_LOG", log})
   }
 }
