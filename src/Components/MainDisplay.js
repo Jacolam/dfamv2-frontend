@@ -30,7 +30,7 @@ class MainDisplay extends React.Component{
   }
   renderEvents = () => {
     const upComingEvents = this.props.state.logs.filter ((call)=>{
-      return call.log_type === false
+      return call.log_type === false && moment(call.datetime).fromNow().split(" ")[0] === 'in'
     })
 
     return upComingEvents.map ((call)=>{
