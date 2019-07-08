@@ -32,7 +32,7 @@ class ContactCard extends React.Component{
       break;
       default:
       this.props.showContact()
-      this.props.detailedContact(props)
+      this.props.detailedContact(this.props)
     }
   }
 
@@ -48,15 +48,15 @@ class ContactCard extends React.Component{
           {this.capitalize(this.props.username)}
         </Card.Header>
         <Card.Meta >
-          Call every {this.props.callCycle}
           <Icon color='black' name='phone' />
-          <br/>
-          Meet every {this.props.meetCycle}
+           every {this.props.callCycle}
+           <br/>
           <Icon color='brown' name='coffee' />
+           every {this.props.meetCycle}
         </Card.Meta>
         <Card.Description textAlign='center'>
           <Button onClick={this.handleClick}>Twitter</Button>
-          {/*<Button onClick={this.handleClick}>Facebook</Button>*/}
+          <Button onClick={this.handleClick}>Facebook</Button>
           <Button onClick={this.handleClick}>Remove</Button>
         </Card.Description>
       </Card>

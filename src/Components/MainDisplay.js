@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import LogCard from './LogCard.js'
-// import moment from 'moment'
+import moment from 'moment'
 
 
 class MainDisplay extends React.Component{
@@ -19,9 +19,11 @@ class MainDisplay extends React.Component{
   }
 
   renderCalls = () => {
+    // returns calls and the ones in the future
     const upComingCalls = this.props.state.logs.filter ((call)=>{
-      return call.log_type === true
+      return call.log_type === true && moment(call.datetime).fromNow().split(" ")[0] === 'in'
     })
+
     return upComingCalls.map ((call)=>{
       return <LogCard attributes={call} page={'main'} />
     })

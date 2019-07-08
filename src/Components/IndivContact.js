@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import hasToken from '../hasToken.js'
 import moment from 'moment'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Icon, Button } from 'semantic-ui-react'
 import LogCard from './LogCard.js'
 
 
@@ -12,7 +12,10 @@ class IndivContact extends React.Component{
     time:'',
     date:'',
     log_type:false,
-    attendee_id: ''
+    attendee_id: '',
+    call_cycle: '',
+    meet_cycle: '',
+    edit: false
   }
 
   componentDidMount(){
@@ -76,12 +79,23 @@ class IndivContact extends React.Component{
   }
 
   render(){
-
+    console.log(this.props.state.detailedContact)
     return(
       <div>
         <Segment>
           {this.capitalize(this.props.state.detailedContact.username)}<br/>
-          call every {this.props.state.detailedContact.callCycle}
+          <Segment>
+            <Icon color='black' name='phone' />
+             every {this.props.state.detailedContact.callCycle}
+             <br/>
+            <Icon color='brown' name='coffee' />
+             every {this.props.state.detailedContact.meetCycle}
+            <br/>
+
+            Phone: {this.props.state.detailedContact.phone}<br/>
+            Email: {this.props.state.detailedContact.email}<br/>
+            <Button>Edit Cycles</Button>
+          </Segment>
 
           <form onSubmit={this.handleSubmit}>
             <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
@@ -90,10 +104,10 @@ class IndivContact extends React.Component{
               <option value={false}>Meet Up</option>
               <option value={true}>Call</option>
             </select>
-            <button type='submit'>Create event </button>
+            <Button type='submit'>Create event </Button>
           </form>
 
-          <button onClick={this.handleClick}>Go Back</button><br/>
+          <Button onClick={this.handleClick}>Go Back</Button><br/>
 
         </Segment>
 
