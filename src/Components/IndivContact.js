@@ -21,7 +21,9 @@ class IndivContact extends React.Component{
   componentDidMount(){
     hasToken()
     this.setState({
-      attendee_id: this.props.state.detailedContact.id
+      attendee_id: this.props.state.detailedContact.id,
+      call_cycle: this.props.state.detailedContact.callCycle,
+      meet_cycle: this.props.state.detailedContact.meetCycle,
     })
 
   }
@@ -106,13 +108,21 @@ class IndivContact extends React.Component{
             <Icon color='black' name='phone' />
              every {this.props.state.detailedContact.callCycle}
              {this.state.edit ? (
-               <input name='call_cycle' onChange={this.handleChange}></input>
+               <input
+                 name='call_cycle'
+                 onChange={this.handleChange}
+                 value={this.state.call_cycle}>
+              </input>
              ):(" ")}
              <br/>
             <Icon color='brown' name='coffee' />
              every {this.props.state.detailedContact.meetCycle}
              {this.state.edit ? (
-               <input name='meet_cycle' onChange={this.handleChange}></input>
+               <input
+                 name='meet_cycle'
+                 onChange={this.handleChange}
+                 value={this.state.meet_cycle}>
+               </input>
              ):(" ")}
             <br/>
 
