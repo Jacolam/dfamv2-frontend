@@ -17,19 +17,24 @@ class NavBar extends React.Component{
         <Menu.Item>
           <Link to="/main">Home</Link><br/>
         </Menu.Item>
+
         <Menu.Item>
           <Link to="/contacts">Contacts</Link><br/>
         </Menu.Item>
+
         <Menu.Item>
           <Link to="/events">Events</Link><br/>
         </Menu.Item>
+
         <Menu.Item>
           <Link to="/search">Search</Link><br/>
         </Menu.Item>
+
         <Menu.Item>
           <Link to="/settings">Settings</Link><br/>
         </Menu.Item>
-        <Menu.Item name='Sign Out' onClick={this.signOut} />
+
+        <Menu.Item name='Sign Out' onClick={this.signOut} position='right'/>
       </Menu>
     )
   }
