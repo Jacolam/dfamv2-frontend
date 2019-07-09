@@ -59,7 +59,7 @@ class ContactCard extends React.Component{
             every {this.props.meetCycle}
           </Card.Meta>
 
-          <Card.Description textAlign='center'>
+          <Card.Description textAlign='center' style={{marginBottom: '5px'}}>
             <Button size='tiny' color='twitter' onClick={this.handleClick}>Twitter</Button>
             <Button size='tiny' color='facebook' onClick={this.handleClick}>Facebook</Button>
             <Button size='tiny' onClick={this.handleClick}>Remove</Button>

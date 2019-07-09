@@ -93,7 +93,7 @@ class LogCard extends React.Component {
     const time = moment(this.props.attributes.datetime).format('h:mm A')
 
     return(
-        <Segment color={ time === '12:00 AM' ? 'red' : "green"} >
+        <Segment color={ time === '12:00 AM' ? 'red' : "green"}  >
           <div class='container'>
             <div class='content'>
 

@@ -102,7 +102,7 @@ class IndivContact extends React.Component{
     // console.log(this.props.state.detailedContact)
     return(
       <div>
-        <Segment>
+        <Segment style={{backgroundColor: '#f2f2f2'}}>
 
           <h2>
             {this.capitalize(this.props.state.detailedContact.username)}<br/>
@@ -174,11 +174,12 @@ class IndivContact extends React.Component{
           </div>
 
           <br/>
-          <Button onClick={this.handleClick} >Go Back</Button><br/>
 
         </Segment>
 
-        <Segment >
+        <Button onClick={this.handleClick} >Go Back</Button><br/>
+
+        <Segment style={{backgroundColor: '#f2f2f2'}} >
           <h4>
             History
           </h4>
