@@ -1,9 +1,37 @@
+.main-container {
+  display: flex;
+  margin: 0px ;
+  justify-content: space-around;
+}
+.button-container {
+  display: flex;
+  justify-content: space-evenly ;
+  vertical-align="bottom"
+}
+.upcoming {
+  width: 48%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px ;
+}
+
 .container {
   display: flex;
   margin: 0px ;
+  justify-content: space-evenly ;
 }
 
 .names {
+  margin-left: 15px;
   width: 100px;
 }
 

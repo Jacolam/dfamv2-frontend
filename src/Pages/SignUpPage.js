@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class SignUpPage extends React.Component{
 
@@ -29,35 +29,46 @@ class SignUpPage extends React.Component{
     .then(data => {
       //will push user to login page after creating
       window.location.replace(`http://localhost:3001/login`)
-      // ADD ERROR MEESAGE IF FAILS TO CREATE
-      // AUTO SIGN IN AFTER SIGNING UP
 
     })
   }
 
   render(){
     return(
-      <Container textAlign='center'>
-        Create An Account
-        <form onSubmit={this.handleSubmit}>
-          Username
-            <input
-              type='text'
-              name='username'
-              onChange={this.handleChange}
-            />
-            <br/>
-          Password
-            <input
-              type='password'
-              name='password'
-              onChange={this.handleChange}
-            /><br/>
-          <button type='submit'>Create Account</button>
-        </form>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='blue' textAlign='center'>
+            Create an Account
+          </Header>
+          <Form size='large' onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <Form.Input
+                fluid icon='user'
+                iconPosition='left'
+                placeholder='Username'
+                name='username'
+                onChange={this.handleChange}
+                />
+              <Form.Input
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password'
+                type='password'
+                name='password'
+                onChange={this.handleChange}
+              />
 
-        <Link to='/login'> Already have an account? </Link>
-      </Container>
+            <Button color='blue' fluid size='large'>
+                Sign Up
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            <Link to='/login'> Already have an account? </Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
     )
   }
 }

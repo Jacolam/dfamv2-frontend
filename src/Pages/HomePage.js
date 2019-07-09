@@ -24,10 +24,8 @@ class HomeContainer extends React.Component{
   }
 
   render(){
-    console.log(this.props.state.settings)
     return(
       <div>
-        Home Page
         <NavBar/>
         <MainDisplay/>
       </div>

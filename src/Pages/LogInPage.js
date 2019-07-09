@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class LogInPage extends React.Component{
 
@@ -13,7 +13,7 @@ class LogInPage extends React.Component{
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    }, () => console.log(this.state))
   }
 
   handleSubmit = (e) => {
@@ -44,31 +44,44 @@ class LogInPage extends React.Component{
 
   render(){
     return(
-      <Container textAlign='center'>
-      Welcome to D-FAM
-      <br/>
-      <form onSubmit={this.handleSubmit}>
-      Username
-        <input
-          type='text'
-          name='username'
-          onChange={this.handleChange}
-        />
-        <br/>
-      Password
-        <input
-          type='password'
-          name='password'
-          onChange={this.handleChange}
-        />
-        <br/>
-        <button type='submit'>Submit</button>
-      </form>
-      <Link to='/signup'> Don't have an account? </Link>
-      </Container>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='blue' textAlign='center'>
+            Welcome to DFAM
+          </Header>
+          <Form size='large' onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <Form.Input
+                fluid icon='user'
+                iconPosition='left'
+                placeholder='Username'
+                name='username'
+                onChange={this.handleChange}
+                />
+              <Form.Input
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password'
+                type='password'
+                name='password'
+                onChange={this.handleChange}
+              />
+
+            <Button color='blue' fluid size='large'>
+                Login
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            <Link to='/signup'> Don't have an account? </Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
     )
   }
 }
+
 
 const mapDispatchToProps = dispatch => {
   return {

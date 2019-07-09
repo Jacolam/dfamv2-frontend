@@ -43,22 +43,29 @@ class ContactCard extends React.Component{
   render(){
     return(
       <Card onClick={ (e) => this.handleClick(e,this.props)} >
-        <Image src={this.props.avatar} />
-        <Card.Header id={this.props.username}>
-          {this.capitalize(this.props.username)}
-        </Card.Header>
-        <Card.Meta >
-          <Icon color='black' name='phone' />
-           every {this.props.callCycle}
-           <br/>
-          <Icon color='brown' name='coffee' />
-           every {this.props.meetCycle}
-        </Card.Meta>
-        <Card.Description textAlign='center'>
-          <Button onClick={this.handleClick}>Twitter</Button>
-          <Button onClick={this.handleClick}>Facebook</Button>
-          <Button onClick={this.handleClick}>Remove</Button>
-        </Card.Description>
+
+        <Image src={this.props.avatar} style={{height: '200px'}} />
+
+        <div class='content-card ' >
+
+          <Card.Header id={this.props.username} textAlign='center'>
+            {this.capitalize(this.props.username)}
+          </Card.Header>
+
+          <Card.Meta textAlign='center' >
+            <Icon color='black' name='phone' />
+            every {this.props.callCycle}<span></span>
+            <Icon color='brown' name='coffee' />
+            every {this.props.meetCycle}
+          </Card.Meta>
+
+          <Card.Description textAlign='center' style={{marginBottom: '5px'}}>
+            <Button size='tiny' color='twitter' onClick={this.handleClick}>Twitter</Button>
+            <Button size='tiny' color='facebook' onClick={this.handleClick}>Facebook</Button>
+            <Button size='tiny' onClick={this.handleClick}>Remove</Button>
+          </Card.Description>
+
+        </div>
       </Card>
     )
   }

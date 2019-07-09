@@ -4,7 +4,7 @@ import NavBar from '../Components/NavBar.js'
 import ContactCard from '../Components/ContactCard.js'
 import IndivContact from '../Components/IndivContact.js'
 import hasToken from '../hasToken.js'
-import { Card } from 'semantic-ui-react'
+import { Card, Segment } from 'semantic-ui-react'
 
 
 class ContactsPage extends React.Component{
@@ -41,17 +41,21 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-
     const allContacts = this.props.state.allContacts
 
     return(
-      <div>
-        Contacts Page
+      <div >
         <NavBar/>
         { allContacts ? (
-          <Card.Group itemsPerRow={5}>
-            {this.renderContacts()}
-          </Card.Group>
+          <Segment style={{backgroundColor: '#f2f2f2'}}>
+            <Card.Group itemsPerRow={5}>
+              {this.renderContacts().length === 0 ? (
+                  <h3>No contacts, lets not forget about our friends 😭</h3>
+              ):(
+                this.renderContacts()
+              )}
+            </Card.Group>
+          </Segment>
           ):(
           <IndivContact />
         )}

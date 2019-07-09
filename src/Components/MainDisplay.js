@@ -41,15 +41,15 @@ class MainDisplay extends React.Component{
   render(){
 
     return(
-      <Segment>
-        <div class='container'>
-          <div class='container'>
-            <Segment>
+      <Segment style={{backgroundColor: '#f2f2f2'}}>
+        <div class='main-container'>
+          <div class='upcoming'>
+            <Segment >
               <h4>Upcoming Calls</h4>
               {this.renderCalls()}
             </Segment>
           </div>
-          <div class='container'>
+          <div class='upcoming'>
             <Segment>
               <h4>Upcoming Events</h4>
               {this.renderEvents()}

@@ -29,15 +29,16 @@ class SearchPage extends React.Component{
   }
 
   render(){
-
-    // console.log(this.props.state.people)
     return(
       <div>
-      Search Page
         <NavBar />
-        <Segment>
+        <Segment style={{backgroundColor: '#f2f2f2'}}>
           <Card.Group itemsPerRow={5}>
-            {this.renderPeople()}
+            {this.renderPeople().length === 0 ? (
+                <h3>Forgetting Someone 🤔?</h3>
+            ):(
+              this.renderPeople()
+            )}
           </Card.Group>
         </Segment>
       </div>

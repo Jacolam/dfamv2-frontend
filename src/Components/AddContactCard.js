@@ -29,8 +29,8 @@ class AddContactCard extends React.Component{
   render(){
     return(
       <Card>
-        <Image src={this.props.avatar} />
-        <Card.Header id={this.props.username} textAlign='center'>
+        <Image src={this.props.avatar} style={{height: '200px'}} />
+        <Card.Header id={this.props.username} textAlign='center' style={{marginBottom: '5px'}}>
           {this.capitalize(this.props.username)}<br/>
           <Button onClick={ (e) => this.handleClick(e,this.props)}>Add Contact</Button>
         </Card.Header>

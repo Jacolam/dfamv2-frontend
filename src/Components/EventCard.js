@@ -14,13 +14,13 @@ class EventCard extends React.Component{
     return(
       <Segment>
       {this.props.name}
-      <Button>Attend!</Button>
         <div>
           {this.props.location}<br/>
           {this.props.date}<br/>
         {this.props.time}<br/>
         </div>
-      {this.props.description}
+      {this.props.description}<br/>
+      <Button>Attend!</Button>
     </Segment>
     )
   }
