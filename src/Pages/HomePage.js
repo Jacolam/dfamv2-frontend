@@ -24,7 +24,6 @@ class HomeContainer extends React.Component{
   }
 
   render(){
-    console.log(this.props.state.settings)
     return(
       <div>
         <NavBar/>

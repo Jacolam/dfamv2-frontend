@@ -99,7 +99,7 @@ class SettingPage extends React.Component{
     return(
       <div>
         <NavBar/>
-        <Segment>
+        <Segment style={{backgroundColor: '#f2f2f2'}}>
           <div style={{display:'flex'}}>
             <div style={{display:'flex', width: '50%'}}>
               <div class='names'>
@@ -136,7 +136,7 @@ class SettingPage extends React.Component{
 
             <div style={{display:'flex', flexDirection: 'column'}}>
               <img class='profile-picture'src={this.props.state.settings.avatar} />
-              <Button onClick={this.openWidget}> Upload Avatar Image</Button>
+              <Button onClick={this.openWidget} color="blue"> Upload Avatar Image</Button>
             </div>
           </div>
         </Segment>

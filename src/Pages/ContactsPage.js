@@ -45,10 +45,10 @@ class ContactsPage extends React.Component{
     const allContacts = this.props.state.allContacts
 
     return(
-      <div>
+      <div >
         <NavBar/>
         { allContacts ? (
-          <Segment>
+          <Segment style={{backgroundColor: '#f2f2f2'}}>
             <Card.Group itemsPerRow={5}>
               {this.renderContacts()}
             </Card.Group>

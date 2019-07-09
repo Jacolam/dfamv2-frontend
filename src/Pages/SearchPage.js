@@ -32,7 +32,7 @@ class SearchPage extends React.Component{
     return(
       <div>
         <NavBar />
-        <Segment>
+        <Segment style={{backgroundColor: '#f2f2f2'}}>
           <Card.Group itemsPerRow={5}>
             {this.renderPeople()}
           </Card.Group>

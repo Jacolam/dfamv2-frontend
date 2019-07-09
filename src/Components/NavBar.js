@@ -16,7 +16,7 @@ class NavBar extends React.Component{
     //   <Link to="/events">Events</Link><br/>
     // </Menu.Item>
     return(
-      <Menu>
+      <Menu color='blue' inverted>
         <Menu.Item>
           <Link to="/main">Home</Link><br/>
         </Menu.Item>

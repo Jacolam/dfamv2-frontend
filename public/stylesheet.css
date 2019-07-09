@@ -1,7 +1,7 @@
 .main-container {
   display: flex;
   margin: 0px ;
-  justify-content: space-evenly ;
+  justify-content: space-around;
 }
 .button-container {
   display: flex;
@@ -9,7 +9,7 @@
   vertical-align="bottom"
 }
 .upcoming {
-  width: 90%;
+  width: 48%;
 }
 
 .content {

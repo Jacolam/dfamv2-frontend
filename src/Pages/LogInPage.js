@@ -46,7 +46,7 @@ class LogInPage extends React.Component{
     return(
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
+          <Header as='h2' color='blue' textAlign='center'>
             Welcome to DFAM
           </Header>
           <Form size='large' onSubmit={this.handleSubmit}>
@@ -68,7 +68,7 @@ class LogInPage extends React.Component{
                 onChange={this.handleChange}
               />
 
-              <Button color='teal' fluid size='large'>
+            <Button color='blue' fluid size='large'>
                 Login
               </Button>
             </Segment>

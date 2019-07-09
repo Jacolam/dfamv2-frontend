@@ -37,7 +37,7 @@ class SignUpPage extends React.Component{
     return(
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
+          <Header as='h2' color='blue' textAlign='center'>
             Create an Account
           </Header>
           <Form size='large' onSubmit={this.handleSubmit}>
@@ -59,7 +59,7 @@ class SignUpPage extends React.Component{
                 onChange={this.handleChange}
               />
 
-              <Button color='teal' fluid size='large'>
+            <Button color='blue' fluid size='large'>
                 Sign Up
               </Button>
             </Segment>
