@@ -41,7 +41,6 @@ class ContactsPage extends React.Component{
   }
 
   render(){
-
     const allContacts = this.props.state.allContacts
 
     return(
@@ -50,7 +49,11 @@ class ContactsPage extends React.Component{
         { allContacts ? (
           <Segment style={{backgroundColor: '#f2f2f2'}}>
             <Card.Group itemsPerRow={5}>
-              {this.renderContacts()}
+              {this.renderContacts().length === 0 ? (
+                  'No Contacts, Lets Not Forget Our Friends 😭'
+              ):(
+                this.renderContacts()
+              )}
             </Card.Group>
           </Segment>
           ):(

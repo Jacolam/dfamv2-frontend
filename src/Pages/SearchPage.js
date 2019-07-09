@@ -34,7 +34,11 @@ class SearchPage extends React.Component{
         <NavBar />
         <Segment style={{backgroundColor: '#f2f2f2'}}>
           <Card.Group itemsPerRow={5}>
-            {this.renderPeople()}
+            {this.renderPeople().length === 0 ? (
+                'Forgetting Someone?'
+            ):(
+              this.renderPeople()
+            )}
           </Card.Group>
         </Segment>
       </div>
