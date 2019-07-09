@@ -13,7 +13,7 @@ class LogInPage extends React.Component{
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    }, () => console.log(this.state))
   }
 
   handleSubmit = (e) => {
@@ -44,31 +44,44 @@ class LogInPage extends React.Component{
 
   render(){
     return(
-        <Segment textAlign='center' style={{marginTop:'30vh', width:'30vw', marginRight: '50%'}} >
-          Welcome to D-FAM
-          <br/>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type='text'
-              name='username'
-              onChange={this.handleChange}
-              placeholder='Username'
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='teal' textAlign='center'>
+            Welcome to DFAM
+          </Header>
+          <Form size='large' onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <Form.Input
+                fluid icon='user'
+                iconPosition='left'
+                placeholder='Username'
+                name='username'
+                onChange={this.handleChange}
+                />
+              <Form.Input
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password'
+                type='password'
+                name='password'
+                onChange={this.handleChange}
               />
-            <br/>
-            <input
-              type='password'
-              name='password'
-              onChange={this.handleChange}
-              placeholder='Password'
-              />
-            <br/>
-            <button type='submit'>Submit</button>
-          </form>
-          <Link to='/signup'> Don't have an account? </Link>
-        </Segment>
+
+              <Button color='teal' fluid size='large'>
+                Login
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            <Link to='/signup'> Don't have an account? </Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
     )
   }
 }
+
 
 const mapDispatchToProps = dispatch => {
   return {
