@@ -35,7 +35,7 @@ class SearchPage extends React.Component{
         <Segment style={{backgroundColor: '#f2f2f2'}}>
           <Card.Group itemsPerRow={5}>
             {this.renderPeople().length === 0 ? (
-                'Forgetting Someone?'
+                <h3>Forgetting Someone 🤔?</h3>
             ):(
               this.renderPeople()
             )}

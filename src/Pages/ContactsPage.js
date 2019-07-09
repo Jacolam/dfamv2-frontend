@@ -50,7 +50,7 @@ class ContactsPage extends React.Component{
           <Segment style={{backgroundColor: '#f2f2f2'}}>
             <Card.Group itemsPerRow={5}>
               {this.renderContacts().length === 0 ? (
-                  'No Contacts, Lets Not Forget Our Friends 😭'
+                  <h3>No contacts, lets not forget about our friends 😭</h3>
               ):(
                 this.renderContacts()
               )}
