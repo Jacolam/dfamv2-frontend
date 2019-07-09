@@ -44,7 +44,7 @@ class ContactCard extends React.Component{
     return(
       <Card onClick={ (e) => this.handleClick(e,this.props)} >
 
-        <Image src={this.props.avatar} />
+        <Image src={this.props.avatar} style={{height: '200px'}} />
 
         <div class='content-card ' >
 

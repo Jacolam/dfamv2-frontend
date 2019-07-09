@@ -99,31 +99,35 @@ class IndivContact extends React.Component{
   }
 
   render(){
-    console.log(this.props.state.detailedContact)
+    // console.log(this.props.state.detailedContact)
     return(
       <div>
         <Segment>
-          {this.capitalize(this.props.state.detailedContact.username)}<br/>
+          <h2>
+            {this.capitalize(this.props.state.detailedContact.username)}<br/>
+          </h2>
           <Segment>
             <Icon color='black' name='phone' />
-             every {this.props.state.detailedContact.callCycle}
+             every
              {this.state.edit ? (
                <input
                  name='call_cycle'
                  onChange={this.handleChange}
-                 value={this.state.call_cycle}>
+                 value={this.state.call_cycle}
+                 size='3'>
               </input>
-             ):(" ")}
+             ):(this.props.state.detailedContact.callCycle)}
              <br/>
             <Icon color='brown' name='coffee' />
-             every {this.props.state.detailedContact.meetCycle}
+             every
              {this.state.edit ? (
                <input
                  name='meet_cycle'
                  onChange={this.handleChange}
-                 value={this.state.meet_cycle}>
+                 value={this.state.meet_cycle}
+                 size='3'>
                </input>
-             ):(" ")}
+             ):(this.props.state.detailedContact.meetCycle)}
             <br/>
 
             Phone: {this.props.state.detailedContact.phone}<br/>
@@ -145,9 +149,13 @@ class IndivContact extends React.Component{
 
         </Segment>
 
-        <Segment>
-          Logs below
-          {this.renderLogs()}
+        <Segment >
+          <h4>
+            History
+          </h4>
+          <div style={{width: '25%',display: 'flex',"justify-content": "space-evenly", "flex-direction": 'column'}}>
+            {this.renderLogs()}
+          </div>
         </Segment>
       </div>
     )

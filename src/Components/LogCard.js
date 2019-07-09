@@ -104,6 +104,7 @@ class LogCard extends React.Component {
               </div>
 
               <div>
+                <br/>
                 {this.state.edit ? (
                   <form onSubmit={this.handleSubmit}>
 
@@ -122,6 +123,7 @@ class LogCard extends React.Component {
 
                   </form>
                 ):('')}
+                <br/>
               </div>
 
               <div class='button-container'>
