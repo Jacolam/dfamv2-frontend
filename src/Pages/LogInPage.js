@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class LogInPage extends React.Component{
 
@@ -44,28 +44,28 @@ class LogInPage extends React.Component{
 
   render(){
     return(
-      <Container textAlign='center'>
-      Welcome to D-FAM
-      <br/>
-      <form onSubmit={this.handleSubmit}>
-      Username
-        <input
-          type='text'
-          name='username'
-          onChange={this.handleChange}
-        />
-        <br/>
-      Password
-        <input
-          type='password'
-          name='password'
-          onChange={this.handleChange}
-        />
-        <br/>
-        <button type='submit'>Submit</button>
-      </form>
-      <Link to='/signup'> Don't have an account? </Link>
-      </Container>
+        <Segment textAlign='center' style={{marginTop:'30vh', width:'30vw', marginRight: '50%'}} >
+          Welcome to D-FAM
+          <br/>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type='text'
+              name='username'
+              onChange={this.handleChange}
+              placeholder='Username'
+              />
+            <br/>
+            <input
+              type='password'
+              name='password'
+              onChange={this.handleChange}
+              placeholder='Password'
+              />
+            <br/>
+            <button type='submit'>Submit</button>
+          </form>
+          <Link to='/signup'> Don't have an account? </Link>
+        </Segment>
     )
   }
 }

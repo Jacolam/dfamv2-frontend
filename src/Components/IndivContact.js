@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import hasToken from '../hasToken.js'
 import moment from 'moment'
-import { Segment, Icon, Button } from 'semantic-ui-react'
+import { Segment, Icon, Button, Input } from 'semantic-ui-react'
 import LogCard from './LogCard.js'
 
 
@@ -103,49 +103,78 @@ class IndivContact extends React.Component{
     return(
       <div>
         <Segment>
+
           <h2>
             {this.capitalize(this.props.state.detailedContact.username)}<br/>
           </h2>
-          <Segment>
-            <Icon color='black' name='phone' />
-             every
-             {this.state.edit ? (
-               <input
-                 name='call_cycle'
-                 onChange={this.handleChange}
-                 value={this.state.call_cycle}
-                 size='3'>
-              </input>
-             ):(this.props.state.detailedContact.callCycle)}
-             <br/>
-            <Icon color='brown' name='coffee' />
-             every
-             {this.state.edit ? (
-               <input
-                 name='meet_cycle'
-                 onChange={this.handleChange}
-                 value={this.state.meet_cycle}
-                 size='3'>
-               </input>
-             ):(this.props.state.detailedContact.meetCycle)}
-            <br/>
 
-            Phone: {this.props.state.detailedContact.phone}<br/>
-            Email: {this.props.state.detailedContact.email}<br/>
-          <Button onClick={this.editCycle}>{this.state.edit? 'Submit' : 'Edit Cycles'}</Button>
-          </Segment>
+          <div style={{display: 'flex'}}>
 
-          <form onSubmit={this.handleSubmit}>
-            <input type='time' onChange={this.handleChange} name="time" step="60" ></input>
-            <input type='date' onChange={this.handleChange} name="date"></input>
-            <select name='log_type' onChange={this.handleChange}>
-              <option value={false}>Meet Up</option>
-              <option value={true}>Call</option>
-            </select>
-            <Button type='submit'>Create event </Button>
-          </form>
+            <Segment style={{margin: `0`,width: `50%`}}>
+              <div class='container' style={{justifyContent: 'left'}}>
+                <div style={{width: '50%'}}>
+                  <Icon color='black' name='phone' />
+                  every
+                  {this.state.edit ? (
+                    <Input
+                      name='call_cycle'
+                      onChange={this.handleChange}
+                      value={this.state.call_cycle}
+                      size='2'>
+                    </Input>
+                  ):(this.props.state.detailedContact.callCycle)}
+                  <br/>
+                  <Icon color='brown' name='coffee' />
+                  every
+                  {this.state.edit ? (
+                    <Input
+                      name='meet_cycle'
+                      onChange={this.handleChange}
+                      value={this.state.meet_cycle}
+                      size='2'>
+                    </Input>
+                  ):(this.props.state.detailedContact.meetCycle)}
+                </div>
+                <div>
+                  Phone: {this.props.state.detailedContact.phone}<br/>
+                  Email: {this.props.state.detailedContact.email}<br/>
+                </div>
+              </div>
+              <br/>
+              <Button onClick={this.editCycle}>{this.state.edit? 'Submit' : 'Edit Cycles'}</Button>
+            </Segment>
 
-          <Button onClick={this.handleClick}>Go Back</Button><br/>
+            <Segment style={{margin: `0`,width: `50%`}}>
+              <form onSubmit={this.handleSubmit}>
+
+                <div>
+                  <Input type='time' onChange={this.handleChange} name="time" step="60" ></Input>
+                  <Input type='date' onChange={this.handleChange} name="date"></Input>
+                </div>
+                <br/>
+
+                <div style={{margin: `0`,display: `flex`}}>
+
+                  <div style={{margin: `0`,width: `20%`}}>
+                    <select name='log_type' onChange={this.handleChange}>
+                      <option value={false}>Meet Up</option>
+                      <option value={true}>Call</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <Button type='submit'>Create event </Button>
+                  </div>
+
+                </div>
+
+              </form>
+            </Segment>
+
+          </div>
+
+          <br/>
+          <Button onClick={this.handleClick} >Go Back</Button><br/>
 
         </Segment>
 
@@ -153,7 +182,7 @@ class IndivContact extends React.Component{
           <h4>
             History
           </h4>
-          <div style={{width: '25%',display: 'flex',"justify-content": "space-evenly", "flex-direction": 'column'}}>
+          <div style={{width: '30%',display: 'flex', "flex-direction": 'column'}}>
             {this.renderLogs()}
           </div>
         </Segment>

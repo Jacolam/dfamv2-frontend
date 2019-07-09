@@ -12,6 +12,9 @@ class NavBar extends React.Component{
   }
 
   render(){
+    // <Menu.Item>
+    //   <Link to="/events">Events</Link><br/>
+    // </Menu.Item>
     return(
       <Menu>
         <Menu.Item>
@@ -22,9 +25,6 @@ class NavBar extends React.Component{
           <Link to="/contacts">Contacts</Link><br/>
         </Menu.Item>
 
-        <Menu.Item>
-          <Link to="/events">Events</Link><br/>
-        </Menu.Item>
 
         <Menu.Item>
           <Link to="/search">Search</Link><br/>

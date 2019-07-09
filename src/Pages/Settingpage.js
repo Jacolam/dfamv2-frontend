@@ -100,36 +100,41 @@ class SettingPage extends React.Component{
       <div>
         <NavBar/>
         <Segment>
-          <div class='container'>
-            <div class='names'>
-              Username:<br/>
-              Phone:<br/>
-              Email:<br/>
-              Twitter:<br/>
-              Facebook:<br/>
+          <div style={{display:'flex'}}>
+            <div style={{display:'flex', width: '50%'}}>
+              <div class='names'>
+                Username:<br/>
+                Phone:<br/>
+                Email:<br/>
+                Twitter:<br/>
+                Facebook:<br/>
+              </div>
+              <div>
+                { this.state.edit ? (
+                  <div>
+                    <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                      <input type='text' name='username' value={this.state.username} ></input><br/>
+                      <input type='text' name='phone' value={this.state.phone} ></input><br/>
+                      <input type='text' name='email' value={this.state.email} ></input><br/>
+                      <input type='text' name='twitter' value={this.state.twitter} ></input><br/>
+                      <input type='text' name='facebook' value={this.state.facebook} ></input><br/>
+                      <Button type="submit">submit</Button>
+                    </form>
+                  </div>
+                ):(
+                  <div>
+                    {this.props.state.settings.username}<br/>
+                    {this.props.state.settings.phone}<br/>
+                    {this.props.state.settings.email}<br/>
+                    {this.props.state.settings.twitter}<br/>
+                    {this.props.state.settings.facebook}<br/>
+                  </div>
+                  )
+                }
+              </div>
             </div>
-              { this.state.edit ? (
-                <div>
-                  <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                    <input type='text' name='username' value={this.state.username} ></input><br/>
-                    <input type='text' name='phone' value={this.state.phone} ></input><br/>
-                    <input type='text' name='email' value={this.state.email} ></input><br/>
-                    <input type='text' name='twitter' value={this.state.twitter} ></input><br/>
-                    <input type='text' name='facebook' value={this.state.facebook} ></input><br/>
-                    <button type="submit">submit</button>
-                  </form>
-                </div>
-              ):(
-                <div>
-                  {this.props.state.settings.username}<br/>
-                  {this.props.state.settings.phone}<br/>
-                  {this.props.state.settings.email}<br/>
-                  {this.props.state.settings.twitter}<br/>
-                  {this.props.state.settings.facebook}<br/>
-                </div>
-                )
-              }
-            <div class='container'>
+
+            <div style={{display:'flex', flexDirection: 'column'}}>
               <img class='profile-picture'src={this.props.state.settings.avatar} />
               <Button onClick={this.openWidget}> Upload Avatar Image</Button>
             </div>

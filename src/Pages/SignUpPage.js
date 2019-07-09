@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 class SignUpPage extends React.Component{
 
@@ -35,27 +35,27 @@ class SignUpPage extends React.Component{
 
   render(){
     return(
-      <Container textAlign='center'>
+      <Segment textAlign='center'>
         Create An Account
         <form onSubmit={this.handleSubmit}>
-          Username
             <input
               type='text'
               name='username'
               onChange={this.handleChange}
+              placeholder='Username'
             />
             <br/>
-          Password
             <input
               type='password'
               name='password'
               onChange={this.handleChange}
+              placeholder='Password'
             /><br/>
           <button type='submit'>Create Account</button>
         </form>
 
         <Link to='/login'> Already have an account? </Link>
-      </Container>
+      </Segment>
     )
   }
 }

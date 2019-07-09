@@ -30,7 +30,7 @@ class LogCard extends React.Component {
   }
 
   handleComplete = () => {
-    console.log(this.props.attributes)
+    // console.log(this.props.attributes)
     fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
       method: 'PATCH',
       headers: {
@@ -113,11 +113,7 @@ class LogCard extends React.Component {
                       <input type='date' onChange={this.handleChange} name="date"></input>
                     </div><br/>
 
-                    <div>
-                      <select name='log_type' onChange={this.handleChange}>
-                        <option value={false}>Meet Up</option>
-                        <option value={true}>Call</option>
-                      </select>
+                    <div style={{margin: `0`,display: `flex`}} >
                       <Button size='mini' type='submit'> Save Changes </Button>
                     </div>
 
