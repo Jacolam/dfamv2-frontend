@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import hasToken from '../hasToken.js'
 import moment from 'moment'
 import { Segment, Icon, Button, Input } from 'semantic-ui-react'
-import LogCard from './LogCard.js'
+import IndivLogCard from './IndivLogCard.js'
 
 
 class IndivContact extends React.Component{
@@ -69,7 +69,7 @@ class IndivContact extends React.Component{
 
     const bothLogs = userLog.concat(inverseUserLog)
     return bothLogs.map( (log) => {
-      return <LogCard attributes={log} />
+      return <IndivLogCard attributes={log} />
     })
   }
 
@@ -99,7 +99,6 @@ class IndivContact extends React.Component{
   }
 
   render(){
-    // console.log(this.props.state.detailedContact)
     return(
       <div>
         <Segment style={{backgroundColor: '#f2f2f2'}}>
@@ -114,7 +113,7 @@ class IndivContact extends React.Component{
               <div class='container' style={{justifyContent: 'left'}}>
                 <div style={{width: '50%'}}>
                   <Icon color='black' name='phone' />
-                  every
+                  <span>every </span>
                   {this.state.edit ? (
                     <Input
                       name='call_cycle'
@@ -123,9 +122,10 @@ class IndivContact extends React.Component{
                       size='2'>
                     </Input>
                   ):(this.props.state.detailedContact.callCycle)}
+                  <span> days</span>
                   <br/>
                   <Icon color='brown' name='coffee' />
-                  every
+                  <span>every </span>
                   {this.state.edit ? (
                     <Input
                       name='meet_cycle'
@@ -134,6 +134,7 @@ class IndivContact extends React.Component{
                       size='2'>
                     </Input>
                   ):(this.props.state.detailedContact.meetCycle)}
+                  <span> days</span>
                 </div>
                 <div>
                   Phone: {this.props.state.detailedContact.phone}<br/>
@@ -163,7 +164,7 @@ class IndivContact extends React.Component{
                   </div>
 
                   <div>
-                    <Button type='submit'>Create event </Button>
+                    <Button type='submit'>Create Event </Button>
                   </div>
 
                 </div>
@@ -183,7 +184,7 @@ class IndivContact extends React.Component{
           <h4>
             History
           </h4>
-          <div style={{width: '30%',display: 'flex', "flex-direction": 'column'}}>
+          <div style={{display: 'flex', "flex-direction": 'column'}}>
             {this.renderLogs()}
           </div>
         </Segment>

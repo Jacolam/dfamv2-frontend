@@ -5,8 +5,8 @@
 }
 .button-container {
   display: flex;
-  justify-content: space-evenly ;
-  vertical-align="bottom"
+  /* justify-content: space-evenly ;
+  vertical-align="bottom" */
 }
 .upcoming {
   width: 48%;
