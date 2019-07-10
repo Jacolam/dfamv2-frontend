@@ -23,7 +23,7 @@ class SettingPage extends React.Component{
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }, () => console.log(this.state))
+    })
   }
 
   openWidget = () => {
@@ -61,19 +61,18 @@ class SettingPage extends React.Component{
         Accepts: 'application/json',
         "Authorization": localStorage.getItem("token")
       }
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        username: data.user.username,
-        phone: data.user.phone,
-        email: data.user.email,
-        twitter: data.user.twitter,
-        facebook: data.user.facebook,
-        avatar: data.user.avatar
+    }).then(res => res.json())
+      .then(data => {
+        this.setState({
+          username: data.user.username,
+          phone: data.user.phone,
+          email: data.user.email,
+          twitter: data.user.twitter,
+          facebook: data.user.facebook,
+          avatar: data.user.avatar
+        })
+        // should use redux state, here
       })
-      // should use redux state, here
-    })
 
   }
 
@@ -141,7 +140,7 @@ class SettingPage extends React.Component{
             </div>
           </div>
         </Segment>
-        <Button onClick={this.editForm}> Change Contact Info</Button>
+        <Button onClick={this.editForm}> Change Contact Info </Button>
       </div>
     )
   }
@@ -153,6 +152,7 @@ const mapDispatchToProps = (dispatch) => {
     updateInfo: (settings) => dispatch({type:"UPDATE_INFO", settings})
   }
 }
+
 const mapStateToProps = (state) => {
   return {state}
 }

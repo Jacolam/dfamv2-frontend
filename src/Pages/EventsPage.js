@@ -17,12 +17,13 @@ class EventsPage extends React.Component{
       }
     }).then(res => res.json())
       .then(events => {
-    this.props.setEvents(events)
-    })
+        this.props.setEvents(events)
+      })
   }
 
   renderEvents = () => {
     return this.props.state.events.map( event =>{
+      //destructoring 
       const { id , name , location , date , time , description } = event
       return (
         <EventCard

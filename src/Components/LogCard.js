@@ -17,12 +17,12 @@ class LogCard extends React.Component {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }, () => console.log(this.state))
+    })
   }
 
   avatarDisplay = () => {
     const contactInfo = this.props.state.contacts.find( (contact)=>{
-      return contact.contactee.id ===this.props.attributes.attendee_id
+      return contact.contactee.id === this.props.attributes.attendee_id
     })
     if (this.props.page  && contactInfo){
       return   <Image size='small' src={contactInfo.contactee.avatar} />
@@ -30,7 +30,7 @@ class LogCard extends React.Component {
   }
 
   handleComplete = () => {
-    // console.log(this.props.attributes)
+
     fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
       method: 'PATCH',
       headers: {
@@ -39,13 +39,14 @@ class LogCard extends React.Component {
         "Authorization": localStorage.getItem("token")
       }
     }).then( res => res.json())
-    .then(data => {
+      .then(data => {
         this.props.changeStatus(data)
-    })
+      })
 
   }
 
   handleEdit = () => {
+
     this.setState({
       time: moment(this.props.attributes.datetime).format('H:mm A'),
       date: moment(this.props.attributes.datetime).format('MMM DD YYYY'),
@@ -53,9 +54,11 @@ class LogCard extends React.Component {
       id: this.props.attributes.id,
       edit: !this.state.edit
     })
+
   }
 
   handleDelete = () => {
+
     fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
       method: 'DELETE',
       headers: {
@@ -66,6 +69,7 @@ class LogCard extends React.Component {
     }).then(res => {
       this.props.deleteLog(this.props.attributes.id)
     })
+
   }
 
   handleSubmit = (e) => {
@@ -79,12 +83,12 @@ class LogCard extends React.Component {
         body: JSON.stringify(this.state)
       }
     ).then(res => res.json())
-    .then( data => {
-      this.props.updateLog(data)
-      this.setState({
-        edit: false
+      .then( data => {
+        this.props.updateLog(data)
+        this.setState({
+          edit: false
+        })
       })
-    })
 
   }
 

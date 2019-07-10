@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import NavBar from '../Components/NavBar.js'
 import MainDisplay from '../Components/MainDisplay.js'
 import hasToken from '../hasToken.js'
-// import moment from 'moment'
 
 class HomeContainer extends React.Component{
 

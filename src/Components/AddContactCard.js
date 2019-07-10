@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Card, Image } from 'semantic-ui-react'
-// import { Link } from 'react-router-dom'
-
 
 class AddContactCard extends React.Component{
 

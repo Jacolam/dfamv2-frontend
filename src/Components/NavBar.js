@@ -30,7 +30,6 @@ class NavBar extends React.Component{
           </Link><br/>
         </Menu.Item>
 
-
         <Menu.Item>
           <Link to="/search">
             <Icon name="search" size="large"/>

@@ -17,7 +17,7 @@ class IndivLogCard extends React.Component {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }, () => console.log(this.state))
+    })
   }
 
   avatarDisplay = () => {
@@ -30,7 +30,6 @@ class IndivLogCard extends React.Component {
   }
 
   handleComplete = () => {
-    // console.log(this.props.attributes)
     fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
       method: 'PATCH',
       headers: {

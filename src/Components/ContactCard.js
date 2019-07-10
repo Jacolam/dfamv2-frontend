@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Card, Image, Icon } from 'semantic-ui-react'
-// import { Link } from 'react-router-dom'
-
 
 class ContactCard extends React.Component{
 
@@ -81,4 +79,5 @@ const mapDispatchToProps = dispatch =>{
     }
   }
 }
+
 export default connect(null,mapDispatchToProps)(ContactCard)

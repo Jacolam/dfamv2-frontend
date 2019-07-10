@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 class LogInPage extends React.Component{
 
@@ -13,7 +13,7 @@ class LogInPage extends React.Component{
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }, () => console.log(this.state))
+    })
   }
 
   handleSubmit = (e) => {
@@ -27,8 +27,7 @@ class LogInPage extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-
+  
       if (!!data.message){
         alert('wrong information')
         //MORE DESCRIPTIVE ERRORS

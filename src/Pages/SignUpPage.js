@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 class SignUpPage extends React.Component{
 
@@ -13,7 +13,7 @@ class SignUpPage extends React.Component{
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }, ()=>console.log(this.state))
+    })
   }
 
   handleSubmit = (e) => {
