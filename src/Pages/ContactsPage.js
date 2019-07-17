@@ -10,16 +10,9 @@ import { Card, Segment } from 'semantic-ui-react'
 class ContactsPage extends React.Component{
 
   componentDidMount(){
-    hasToken()
-    //duplicated code, using for dev purposes, needs to send fetch request from whatever page, to retrieve infomation
-    fetch('http://localhost:3000/api/v1/contacts', {
-      headers: {
-        "Authorization": localStorage.getItem("token")
-      }
-    }).then(res => res.json())
-      .then(data => {
-        this.props.setContacts(data.contacts)
-        this.props.setLogs(data.logs,data.inverse_logs)
+    hasToken().then(data => {
+      this.props.setContacts(data.contacts)
+      this.props.setLogs(data.logs,data.inverse_logs)
     })
   }
 
