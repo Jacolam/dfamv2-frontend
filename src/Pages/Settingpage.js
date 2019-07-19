@@ -96,6 +96,15 @@ class SettingPage extends React.Component{
     })
   }
 
+  deleteAccount = () => {
+    console.log('I wanna delete this ')
+    var confirmation = window.confirm(' Are you sure you want to delete your account? This can not be undone.')
+    // confirmation is boolean
+    if (confirmation){
+
+    }
+  }
+
   render(){
     return(
       <div>
@@ -143,6 +152,7 @@ class SettingPage extends React.Component{
           </div>
         </Segment>
         <Button onClick={this.editForm}> Change Contact Info </Button>
+        <Button color='red' onClick={this.deleteAccount}>Delete Account</Button>
       </div>
     )
   }
