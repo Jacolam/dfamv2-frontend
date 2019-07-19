@@ -101,6 +101,17 @@ class SettingPage extends React.Component{
     var confirmation = window.confirm(' Are you sure you want to delete your account? This can not be undone.')
     // confirmation is boolean
     if (confirmation){
+      fetch(`http://localhost:3000/api/v1/user/delete`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Accepts: 'application/json',
+          "Authorization": localStorage.getItem("token")
+        }
+      }).then( () => {
+        localStorage.clear()
+        window.location.replace(`http://localhost:3001/login`)
+      })
 
     }
   }
