@@ -4,7 +4,7 @@ DFAM is a relationship management application, that helps you set reminders to r
 # Demo
 
 ### Adding Friends
-![](adding-friends.gif)
+<!-- ![](adding-friends.gif) -->
 
 Upon signing up you can add other users that are apart of the DFAM community and keep in contact with them.
 
