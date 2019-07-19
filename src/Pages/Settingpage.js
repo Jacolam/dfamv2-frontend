@@ -7,7 +7,9 @@ import { Button, Segment } from 'semantic-ui-react'
 class SettingPage extends React.Component{
 
   componentDidMount(){
-    hasToken()
+    hasToken().then(data => {
+      this.props.setSettings(data)
+    })
   }
 
   state = {
@@ -149,7 +151,8 @@ class SettingPage extends React.Component{
 const mapDispatchToProps = (dispatch) => {
   return {
     changeAvatar: (image) => dispatch({type:"CHANGE_IMAGE", image}),
-    updateInfo: (settings) => dispatch({type:"UPDATE_INFO", settings})
+    updateInfo: (settings) => dispatch({type:"UPDATE_INFO", settings}),
+    setSettings: (data) => dispatch({type:'SET_SETTINGS', data })
   }
 }
 
