@@ -25,7 +25,7 @@ We can update our personal contact information as well as our profile picture.
 
 ## Stack
 DFAM is built using the following:
-- React JS
+- React/Redux JS
 - Ruby on Rails
 - Semantic UI
 - Cloudinary
