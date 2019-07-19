@@ -27,9 +27,15 @@ class SignUpPage extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-      //will push user to login page after creating
-      window.location.replace(`http://localhost:3001/login`)
-
+      //will push user to login page after creating]
+      if (!!data.error){
+        alert('Account already exists')
+        //MORE DESCRIPTIVE ERRORS
+      } else {
+        localStorage.setItem('current_user', data.user.username)
+        localStorage.setItem('token', data.jwt)
+        window.location.replace(`http://localhost:3001/main`)
+      }
     })
   }
 
