@@ -29,4 +29,3 @@ DFAM is built using the following:
 - Ruby on Rails
 - Semantic UI
 - Cloudinary
-- Moment
