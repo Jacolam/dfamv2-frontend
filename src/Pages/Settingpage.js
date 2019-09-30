@@ -124,7 +124,7 @@ class SettingPage extends React.Component{
           <div style={{display:'flex'}}>
 
             <div style={{display:'flex', flexDirection: 'column', width: '18.5%'}}>
-              <img class='profile-picture'src={this.props.state.settings.avatar} />
+              <img class='profile-picture' alt='profile picture'src={this.props.state.settings.avatar} />
               <Button onClick={this.openWidget} color="blue"> Upload Avatar Image</Button>
             </div>
 
