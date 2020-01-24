@@ -8,7 +8,7 @@ import { Card } from 'semantic-ui-react'
 class SearchPage extends React.Component{
 
   componentDidMount(){
-    fetch('http://localhost:3000/api/v1/people', {
+    fetch('https://vast-meadow-14014.herokuapp.com/api/v1/people', {
       headers: {
         "Authorization": localStorage.getItem("token")
       }

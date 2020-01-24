@@ -11,7 +11,7 @@ class EventsPage extends React.Component{
 
   componentDidMount(){
     hasToken()
-    fetch('http://localhost:3000/api/v1/events', {
+    fetch('https://vast-meadow-14014.herokuapp.com/api/v1/events', {
       headers: {
         "Authorization": localStorage.getItem("token")
       }
@@ -23,7 +23,7 @@ class EventsPage extends React.Component{
 
   renderEvents = () => {
     return this.props.state.events.map( event =>{
-      //destructoring 
+      //destructoring
       const { id , name , location , date , time , description } = event
       return (
         <EventCard

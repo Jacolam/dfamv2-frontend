@@ -18,7 +18,7 @@ class LogInPage extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('https://vast-meadow-14014.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ class LogInPage extends React.Component{
       } else {
         localStorage.setItem('current_user', data.user.username)
         localStorage.setItem('token', data.jwt)
-        window.location.replace(`http://localhost:3001/main`)
+        window.location.replace(`http://dfam.herokuapp.com/main`)
       }
 
 

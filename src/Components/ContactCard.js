@@ -15,7 +15,7 @@ class ContactCard extends React.Component{
       break;
       case "Remove":
 
-        fetch('http://localhost:3000/api/v1/removecontact', {
+        fetch('https://vast-meadow-14014.herokuapp.com/api/v1/removecontact', {
           method: "DELETE",
           headers: {
             'Content-Type': 'application/json',

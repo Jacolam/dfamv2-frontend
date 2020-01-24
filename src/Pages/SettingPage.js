@@ -4,6 +4,7 @@ import NavBar from '../Components/NavBar.js'
 import hasToken from '../hasToken.js'
 import { Button, Segment } from 'semantic-ui-react'
 
+
 class SettingPage extends React.Component{
 
   componentDidMount(){
@@ -37,7 +38,7 @@ class SettingPage extends React.Component{
       (error, result) => {
         if ( result && result.event === 'success'){
           this.props.changeAvatar(`https://res.cloudinary.com/dcbn7dhvc/image/upload/${result.info.path}`)
-          fetch(`http://localhost:3000/api/v1/user/update`, {
+          fetch(`https://vast-meadow-14014.herokuapp.com/api/v1/user/update`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ class SettingPage extends React.Component{
       edit: true
     })
 
-    fetch(`http://localhost:3000/api/v1/profile/edit`,{
+    fetch(`https://vast-meadow-14014.herokuapp.com/api/v1/profile/edit`,{
       headers: {
         'Content-Type': 'application/json',
         Accepts: 'application/json',
@@ -80,7 +81,7 @@ class SettingPage extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/api/v1/user/update`, {
+    fetch(`https://vast-meadow-14014.herokuapp.com/api/v1/user/update`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -101,7 +102,7 @@ class SettingPage extends React.Component{
     var confirmation = window.confirm(' Are you sure you want to delete your account? This can not be undone.')
     // confirmation is boolean
     if (confirmation){
-      fetch(`http://localhost:3000/api/v1/user/delete`, {
+      fetch(`https://vast-meadow-14014.herokuapp.com/api/v1/user/delete`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +111,7 @@ class SettingPage extends React.Component{
         }
       }).then( () => {
         localStorage.clear()
-        window.location.replace(`http://localhost:3001/login`)
+        window.location.replace(`http://dfam.herokuapp.com/login`)
       })
 
     }

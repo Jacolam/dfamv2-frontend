@@ -10,7 +10,7 @@ class AddContactCard extends React.Component{
 
   handleClick = (e) => {
 
-    fetch('http://localhost:3000/api/v1/addperson', {
+    fetch('https://vast-meadow-14014.herokuapp.com/api/v1/addperson', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',

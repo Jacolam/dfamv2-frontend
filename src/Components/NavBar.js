@@ -8,7 +8,7 @@ class NavBar extends React.Component{
   signOut = () => {
     // clears token and redirects to login page
     localStorage.clear()
-    window.location.replace(`http://localhost:3001/login`)
+    window.location.replace(`http://dfam.herokuapp.com/login`)
   }
 
   render(){

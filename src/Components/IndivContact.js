@@ -43,7 +43,7 @@ class IndivContact extends React.Component{
 
     const datetime = moment(this.state.date + " " + this.state.time)
 
-    fetch('http://localhost:3000/api/v1/logs', {
+    fetch('https://vast-meadow-14014.herokuapp.com/api/v1/logs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ class IndivContact extends React.Component{
   editCycle = () => {
     if (this.state.edit){
       console.log('submit')
-      fetch('http://localhost:3000/api/v1/contacts/update', {
+      fetch('https://vast-meadow-14014.herokuapp.com/api/v1/contacts/update', {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

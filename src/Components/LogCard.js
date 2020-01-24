@@ -31,7 +31,7 @@ class LogCard extends React.Component {
 
   handleComplete = () => {
 
-    fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
+    fetch(`https://vast-meadow-14014.herokuapp.com/api/v1/logs/${this.props.attributes.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ class LogCard extends React.Component {
 
   handleDelete = () => {
 
-    fetch(`http://localhost:3000/api/v1/logs/${this.props.attributes.id}`, {
+    fetch(`https://vast-meadow-14014.herokuapp.com/api/v1/logs/${this.props.attributes.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ class LogCard extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/api/v1/logs', {
+    fetch('https://vast-meadow-14014.herokuapp.com/api/v1/logs', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
