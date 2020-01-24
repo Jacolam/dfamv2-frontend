@@ -1,6 +1,9 @@
 {
   "name": "dfamv2-frontend",
   "version": "0.1.0",
+  "engines":{
+    "node": "12.14.1"
+  },
   "private": true,
   "dependencies": {
     "moment": "^2.24.0",
