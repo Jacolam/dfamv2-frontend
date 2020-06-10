@@ -27,7 +27,7 @@ class LogInPage extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-  
+
       if (!!data.message){
         alert('wrong information')
         //MORE DESCRIPTIVE ERRORS
@@ -75,6 +75,7 @@ class LogInPage extends React.Component{
           <Message>
             <Link to='/signup'> Don't have an account? </Link>
           </Message>
+          <p>Username: test <br/> password: apptest1</p>
         </Grid.Column>
       </Grid>
     )
