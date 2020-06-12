@@ -75,7 +75,7 @@ class LogInPage extends React.Component{
           <Message>
             <Link to='/signup'> Don't have an account? </Link>
           </Message>
-          <p>Username: test <br/> password: apptest1</p>
+          <p>Username: test <br/> Password: apptest1</p>
         </Grid.Column>
       </Grid>
     )
